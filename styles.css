@@ -1,0 +1,195 @@
+* {
+	font-family: "Tajawal", sans-serif;
+}
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: 2.5vh;
+	box-sizing: border-box;
+	height: 100vh;
+	background: #50113c;
+}
+header h1::selection,
+header p::selection {
+	background: #fafafa;
+	color: #50113c;
+}
+header h1,
+section h1 {
+	font-family: "Megrim", cursive;
+	font-size: 20vh;
+	font-weight: 100;
+	color: #fafafa;
+	margin: 0;
+}
+@media(max-width: 1000px) {
+	header h1,
+	section h1 {
+		font-size: 10vw;
+	}
+}
+@media(max-width: 600px) {
+	header h1,
+	section h1 {
+		font-size: 4.5em;
+	}
+}
+header p {
+	font-family: "Inconsolata", monospace;
+	font-size: 2rem;
+	font-weight: 900;
+	color: rgba(0,0,0, .7);
+	margin: 0;
+}
+header nav {
+	margin-top: 10vh;
+}
+@media(max-width: 600px) {
+	header nav {
+		margin-top: 20vh;
+	}
+}
+header nav a {
+	display: inline-block;
+	padding: 1rem;
+	border-radius: .25rem;
+	color: rgba(0,0,0, .7);
+	display: inline-block;
+	text-decoration: none;
+	position: relative;
+}
+header nav a svg {
+	width: 3rem;
+	height: 3rem;
+}
+
+header nav a:hover,
+header nav a:focus {
+	background: #e04e1c;
+	--highlight-fg: #e04e1c;
+	color: #fafafa;
+	--highlight-bg: #fafafa;
+	outline: none;
+	opacity: 1;
+	transition: .2s ease opacity;
+}
+
+section {
+	display: flex;
+	flex-direction: row-reverse;
+	background: #50113c;
+}
+section:nth-child(2n) {
+	flex-direction: row;
+	background: #e04e1c;
+}
+@media(max-width: 600px) {
+	section:nth-child(n) {
+		flex-direction: column;
+	}
+}
+section h1 {
+	position: sticky;
+	top: 0;
+	height: 100vh;
+	width: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: 2.5vh;
+	box-sizing: border-box;
+	flex-shrink: 0;
+}
+
+@media(max-width: 600px) {
+	section h1 {
+		position: static;
+		width: 100%;
+	}
+}
+section h1::selection {
+	background: #fafafa;
+	color: #e04e1c;
+}
+section .content {
+	padding: 3rem;
+	width: 100%;
+	box-sizing: border-box;
+	background: #fff;
+}
+@media(max-width: 800px) {
+	section .content {
+		padding: 2rem;
+	}
+}
+section h2 {
+	font-family: "Inconsolata", monospace;
+	font-size: 1.5rem;
+	font-weight: 700;
+	margin: 3rem 0 1rem;
+	color: #111;
+	text-transform: uppercase;
+}
+section h2:first-child {
+	margin-top: 0;
+}
+section p {
+	font-size: 1.2rem;
+	line-height: 1.5;
+	margin: 1.6rem 0 0;
+	color: #222;
+}
+@media(max-width: 800px) {
+	section p {
+		font-size: 1.5rem;
+	}
+}
+section h2 + p {
+	margin-top: .6rem;
+}
+section .talks-seperated {
+	display: flex;
+	flex-wrap: wrap;
+}
+section .talks-seperated a:not(:last-of-type) {
+	position: relative;
+	margin-right: 1em;
+}
+section .talks-seperated a:not(:last-of-type):after {
+	position: absolute;
+	top: 50%;
+	right: calc(-.5em - 1px);
+	display: block;
+	width: 2px;
+	height: 2px;
+	background: #999;
+	content: "";
+	pointer-events: none;
+}
+section a {
+	color: #e04e1c;
+}
+section a:hover,
+section a:focus {
+	outline: none;
+	color: #fafafa;
+	background: #e04e1c;
+}
+section h2::selection,
+section p::selection {
+	color: #fafafa;
+	background: #e04e1c;
+}
+section a::selection {
+	color: #222;
+	background: #e04e1c;
+}
