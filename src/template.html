@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang='en'>
+<head>
+	<meta charset="utf-8">
+	<meta name="theme-color" content="#50113c">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|Megrim|Tajawa">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158185832-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-158185832-2');
+    </script>
+
+	%sapper.base%
+
+	<link rel="stylesheet" href="./global.css" />
+	<link rel="manifest" href="manifest.json" crossorigin="use-credentials" />
+    <meta name="application-name" content="Stephen Cook Dev" />
+    <meta name="msapplication-TileColor" content="#420e31" />
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="/mstile-310x310.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/apple-touch-icon-152x152.png" />
+    <link rel="icon" href="/favicon.ico" />
+
+	%sapper.styles%
+
+	%sapper.head%
+</head>
+<body>
+	<div id="sapper">%sapper.html%</div>
+
+	%sapper.scripts%
+</body>
+</html>

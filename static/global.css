@@ -19,6 +19,7 @@ header {
   background: #50113c;
 }
 header h1::selection,
+header p::selection,
 header p a::selection {
   background: #fafafa;
   color: #50113c;
@@ -43,7 +44,8 @@ section h1 {
     font-size: 4.5em;
   }
 }
-header p a {
+header p a,
+header p {
   font-family: "Inconsolata", monospace;
   font-size: 2rem;
   font-weight: 900;
