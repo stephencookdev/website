@@ -8,7 +8,7 @@
   <title>{status}</title>
 </svelte:head>
 
-<header>
+<header class="grand">
   <h1>{status}</h1>
 
   <p>{error.message}</p>

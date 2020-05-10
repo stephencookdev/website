@@ -1,12 +1,4 @@
 <style>
-  header {
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    padding: 2.5vh;
-    height: 100vh;
-  }
-
   header nav {
     margin-top: 10vh;
   }
@@ -41,7 +33,7 @@
   <title>Stephen Cook Dev</title>
 </svelte:head>
 
-<header>
+<header class="grand">
   <h1>Stephen Cook</h1>
   <p>
     <a href="https://twitter.com/StephenCookDev">@stephencookdev</a>
