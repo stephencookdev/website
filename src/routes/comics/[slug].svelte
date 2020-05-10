@@ -136,11 +136,32 @@
 
   .share {
     display: flex;
-    font-size: 2rem;
-    justify-content: space-around;
+    justify-content: center;
     max-width: 800px;
     margin: auto;
     padding: 4rem 0;
+  }
+  .share a {
+    position: relative;
+    font-family: "Inconsolata", monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .share a:not(:last-child) {
+    margin-right: 2rem;
+  }
+  .share a:not(:last-child)::after {
+    content: "";
+    pointer-events: none;
+    display: block;
+    width: 2px;
+    height: 2px;
+    background: #e04e1c;
+    position: absolute;
+    right: -1rem;
+    top: calc(50% - 1px);
   }
 </style>
 
