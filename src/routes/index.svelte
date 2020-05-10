@@ -1,3 +1,42 @@
+<style>
+  header {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 2.5vh;
+    height: 100vh;
+  }
+
+  header nav {
+    margin-top: 10vh;
+  }
+  @media (max-width: 600px) {
+    header nav {
+      margin-top: 20vh;
+    }
+  }
+
+  section .talks-seperated {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  section .talks-seperated a:not(:last-of-type) {
+    position: relative;
+    margin-right: 1em;
+  }
+  section .talks-seperated a:not(:last-of-type):after {
+    position: absolute;
+    top: 50%;
+    right: calc(-0.5em - 1px);
+    display: block;
+    width: 2px;
+    height: 2px;
+    background: #999;
+    content: "";
+    pointer-events: none;
+  }
+</style>
+
 <svelte:head>
   <title>Stephen Cook Dev</title>
 </svelte:head>
@@ -41,6 +80,41 @@
       </svg>
     </a>
 
+    <a title="Comics" href="/comics">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 6.35 6.35"
+        fill="none"
+        stroke="currentColor"
+        stroke-width=".25"
+        stroke-linecap="round">
+        <path
+          stroke-width=".5"
+          d="M1.4559.8301C1.911.7791 2.3847.6625 2.8564.599c1.1499-.155
+          1.4022-.1654
+          2.3109.5285.2225.17.5114.3713.6302.6261.1344.2896.1274.5024.1401.8267.0206.5242-.1263.9362-.3852
+          1.386-.037.0651-.058.1391-.105.1982-.0252.0318-.0767.0367-.105.0661-.0734.0762-.6086.7416-.8754.8936-.6865.3827-1.5014.4624-2.2759.4624-.1984
+          0-.401.0386-.5952 0-.4947-.0983-.9037-.5763-1.0154-1.0212C.4057
+          3.8662.477 2.778.7205
+          2.091c.0886-.2505.1942-.506.3502-.7294.0315-.0447.1166-.1568.175-.1982.0296-.021.079-.0085.1051-.033.0165-.0157-.0165-.0505
+          0-.0661.0039-.0037.1367-.033.035-.033" />
+        <path
+          d="M3.2039 2.4555c.0308-.0889-.035-.2167
+          0-.304.0476-.119.2503-.2126.3508-.2572.6949-.3089.7245.8424.4443
+          1.216-.1842.2456-.5014.2566-.6314-.0467-.088-.2052-.082-.4037-.1637-.608zM4.42
+          4.1393c-.2735-.1367-.8055.0328-1.1226-.0467-.2616.4781.5328.6495.8186.421.1214-.0972.2095-.2483.304-.3743zM4.5369
+          2.5257c-.0039-.1682.0536-.4934.2572-.5613.466-.1553.4498.68.3742.9822-.031.1239-.1736.2672-.2572.3508-.3307.3308-.568-.4486-.3742-.7717z" />
+        <path
+          fill="currentColor"
+          d="M3.7184
+          2.6894c-.01-.9235.4647-.111.2806.2572-.0976.1953-.3995-.0195-.2806-.2572zM4.876
+          2.6894c.1532-.5518.2756.0568.152.304-.0149.0298-.1386.0635-.152.0234-.0348-.1043.046-.2353
+          0-.3274z" />
+      </svg>
+    </a>
+
     <a title="GitHub" href="#open-source">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -69,7 +143,7 @@
   </nav>
 </header>
 
-<section id="about">
+<section class="grand" id="about">
   <h1>About</h1>
   <div class="content">
     <h2>Who Am I?</h2>
@@ -113,7 +187,7 @@
   </div>
 </section>
 
-<section id="talks">
+<section class="grand" id="talks">
   <h1>Talks</h1>
   <div class="content">
     <p>
@@ -183,7 +257,7 @@
   </div>
 </section>
 
-<section id="open-source">
+<section class="grand" id="open-source">
   <h1>Open Source</h1>
   <div class="content">
     <p>

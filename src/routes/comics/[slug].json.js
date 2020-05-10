@@ -1,0 +1,55 @@
+const comics = [
+  {
+    published: "2020-05-08",
+    slug: "un-mute",
+    title: "Un-Mute",
+    hoverText: "adjusting to remote work well",
+  },
+  {
+    published: "2020-05-01",
+    slug: "just-one-bug",
+    title: "Just One Bug",
+    hoverText: "okay but just 5 more minutes otherwise I'll lose my place",
+  },
+  {
+    published: "2020-04-24",
+    slug: "new-project",
+    title: "New Project",
+    hoverText: "I would never start a new project during quarantine...",
+  },
+];
+
+export function get(req, res, next) {
+  const { slug } = req.params;
+
+  const matchingComicIndex =
+    slug === "latest" ? 0 : comics.findIndex((comic) => comic.slug === slug);
+
+  if (matchingComicIndex !== -1) {
+    res.writeHead(200, {
+      "Content-Type": "application/json",
+    });
+
+    const matchingComic = {
+      ...comics[matchingComicIndex],
+      before: comics[matchingComicIndex + 1]
+        ? comics[matchingComicIndex + 1].slug
+        : null,
+      after: comics[matchingComicIndex - 1]
+        ? comics[matchingComicIndex - 1].slug
+        : null,
+    };
+
+    res.end(JSON.stringify(matchingComic));
+  } else {
+    res.writeHead(404, {
+      "Content-Type": "application/json",
+    });
+
+    res.end(
+      JSON.stringify({
+        message: `Not found`,
+      })
+    );
+  }
+}
