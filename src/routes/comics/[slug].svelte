@@ -13,17 +13,19 @@
 <script>
   export let comic;
 
-  const relativeComicSrc = `/comics/${comic.slug}.png`;
-  const absoluteComicSrc = `https://stephencook.dev${relativeComicSrc}`;
+  const relativeComicSrc = comic => `/comics/${comic.slug}.png`;
+  const absoluteComicSrc = comic =>
+    `https://stephencook.dev${relativeComicSrc(comic)}`;
 
-  const twitterShareText = `${comic.title} by @StephenCookDev`;
-  const twitterShareUrl = `https://twitter.com/share?url=https://stephencook.dev/comics/${
-    comic.slug
-  }&amp;text=${encodeURIComponent(twitterShareText)}`;
+  const twitterShareText = comic => `${comic.title} by @StephenCookDev`;
+  const twitterShareUrl = comic =>
+    `https://twitter.com/share?url=https://stephencook.dev/comics/${
+      comic.slug
+    }&amp;text=${encodeURIComponent(twitterShareText(comic))}`;
 
-  const shareTwitter = e => {
+  const shareTwitter = comic => e => {
     e.preventDefault();
-    window.open(twitterShareUrl, "name", "width=600,height=400");
+    window.open(twitterShareUrl(comic), "name", "width=600,height=400");
   };
 </script>
 
@@ -149,7 +151,7 @@
   <meta
     property="og:url"
     content="https://stephencook.dev/comics/{comic.slug}" />
-  <meta property="og:image" content={absoluteComicSrc} />
+  <meta property="og:image" content={absoluteComicSrc(comic)} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@StephenCookDev" />
   <meta name="twitter:creator" content="@StephenCookDev" />
@@ -194,7 +196,10 @@
     {:else}
       <span disabled class="before-arrow" aria-label="Before" />
     {/if}
-    <img src={relativeComicSrc} alt={comic.alt} title={comic.hoverText} />
+    <img
+      src={relativeComicSrc(comic)}
+      alt={comic.alt}
+      title={comic.hoverText} />
     {#if comic.after}
       <a
         href="/comics/{comic.after}"
@@ -211,5 +216,5 @@
 
 <section class="share">
   <a href="https://twitter.com/StephenCookDev">Follow Me</a>
-  <a href={twitterShareUrl} on:click={shareTwitter}>Share</a>
+  <a href={twitterShareUrl(comic)} on:click={shareTwitter(comic)}>Share</a>
 </section>
