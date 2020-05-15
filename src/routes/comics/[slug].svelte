@@ -80,6 +80,7 @@
     display: flex;
     align-items: center;
     max-width: 100%;
+    width: 600px;
   }
 
   @media (max-width: 800px) {
