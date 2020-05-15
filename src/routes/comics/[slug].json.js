@@ -4,7 +4,7 @@ const comics = [
     slug: "find-that-music",
     title: "Find That Music",
     hoverText:
-      "next you'll tell me that adjusting my window positions is procastinating too",
+      "next you'll tell me that adjusting my window positions is procrastinating too",
   },
   {
     published: "2020-05-08",
