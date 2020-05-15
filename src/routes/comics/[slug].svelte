@@ -67,6 +67,12 @@
     display: flex;
     list-style: none;
     margin: 0;
+    padding: 0;
+  }
+  @media (max-width: 800px) {
+    nav ul {
+      margin: 0 -0.5rem;
+    }
   }
   nav ul a {
     padding: 0.5rem;
@@ -77,7 +83,7 @@
 
   h2 {
     text-align: center;
-    margin-bottom: 2rem;
+    margin: 3rem 0 2rem;
   }
 
   .comic {
