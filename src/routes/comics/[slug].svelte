@@ -80,7 +80,6 @@
     display: flex;
     align-items: center;
     max-width: 100%;
-    width: 600px;
   }
 
   @media (max-width: 800px) {
@@ -100,6 +99,7 @@
   .comic img {
     display: block;
     max-width: 100%;
+    width: 600px;
   }
 
   .arrow-link {
