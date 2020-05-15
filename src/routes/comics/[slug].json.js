@@ -1,5 +1,12 @@
 const comics = [
   {
+    published: "2020-05-15",
+    slug: "find-that-music",
+    title: "Find That Music",
+    hoverText:
+      "next you'll tell me that adjusting my window positions is procastinating too",
+  },
+  {
     published: "2020-05-08",
     slug: "un-mute",
     title: "Un-Mute",
