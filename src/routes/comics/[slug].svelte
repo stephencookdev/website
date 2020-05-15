@@ -1,18 +1,5 @@
 <script context="module">
   const relativeComicSrc = comic => `/comics/${comic.slug}.png`;
-  const absoluteComicSrc = comic =>
-    `https://stephencook.dev${relativeComicSrc(comic)}`;
-
-  const twitterShareText = comic => `${comic.title} by @StephenCookDev`;
-  const twitterShareUrl = comic =>
-    `https://twitter.com/share?url=https://stephencook.dev/comics/${
-      comic.slug
-    }&amp;text=${encodeURIComponent(twitterShareText(comic))}`;
-
-  const shareTwitter = comic => e => {
-    e.preventDefault();
-    window.open(twitterShareUrl(comic), "name", "width=600,height=400");
-  };
 
   export async function preload({ params }) {
     const res = await this.fetch(`comics/${params.slug}.json`);
@@ -33,6 +20,25 @@
   import Comic from "../../components/comic.svelte";
 
   export let comic;
+
+  const absoluteComicSrc = comic =>
+    `https://stephencook.dev${relativeComicSrc(comic)}`;
+  const canonicalComicUrl = comic =>
+    `https://stephencook.dev/comics/${comic.slug}/`;
+
+  const comicKeywords = comic =>
+    ["comic", comic.keywords].filter(Boolean).join(", ");
+
+  const twitterShareText = comic => `${comic.title} by @StephenCookDev`;
+  const twitterShareUrl = comic =>
+    `https://twitter.com/share?url=https://stephencook.dev/comics/${
+      comic.slug
+    }&amp;text=${encodeURIComponent(twitterShareText(comic))}`;
+
+  const shareTwitter = comic => e => {
+    e.preventDefault();
+    window.open(twitterShareUrl(comic), "name", "width=600,height=400");
+  };
 </script>
 
 <style>
@@ -180,17 +186,20 @@
 
 <svelte:head>
   <title>{comic.title} | Stephen Cook Dev Comics</title>
+  <meta name="description" content="{comic.title} | {comic.hoverText}" />
+  <meta name="keywords" content={comicKeywords(comic)} />
   <meta property="og:title" content={comic.title} />
   <meta property="og:site_name" content="Stephen Cook Dev" />
-  <meta
-    property="og:url"
-    content="https://stephencook.dev/comics/{comic.slug}" />
+  <meta property="og:url" content={canonicalComicUrl} />
   <meta property="og:image" content={absoluteComicSrc(comic)} />
+  <meta name="twitter:image" content={absoluteComicSrc(comic)} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@StephenCookDev" />
   <meta name="twitter:creator" content="@StephenCookDev" />
   <meta name="twitter:title" content={comic.title} />
   <meta name="twitter:description" content={comic.hoverText} />
+
+  <link rel="canonical" href={canonicalComicUrl(comic)} />
 </svelte:head>
 
 <header>
