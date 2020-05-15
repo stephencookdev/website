@@ -1,18 +1,4 @@
 <script context="module">
-  export async function preload({ params }) {
-    const res = await this.fetch(`comics/${params.slug}.json`);
-    const data = await res.json();
-    if (res.status !== 200) {
-      return this.error(res.status, data.message);
-    }
-
-    return { comic: data };
-  }
-</script>
-
-<script>
-  export let comic;
-
   const relativeComicSrc = comic => `/comics/${comic.slug}.png`;
   const absoluteComicSrc = comic =>
     `https://stephencook.dev${relativeComicSrc(comic)}`;
@@ -27,6 +13,26 @@
     e.preventDefault();
     window.open(twitterShareUrl(comic), "name", "width=600,height=400");
   };
+
+  export async function preload({ params }) {
+    const res = await this.fetch(`comics/${params.slug}.json`);
+    const comic = await res.json();
+    if (res.status !== 200) {
+      return this.error(res.status, data.message);
+    }
+
+    // we don't do anything with this, we just want to preload it for speed of
+    // it loading later
+    this.fetch(relativeComicSrc(comic));
+
+    return { comic };
+  }
+</script>
+
+<script>
+  import Comic from "../../components/comic.svelte";
+
+  export let comic;
 </script>
 
 <style>
@@ -90,13 +96,13 @@
       grid-template-columns: 1fr 1fr;
     }
 
-    .comic img {
+    .comic :global(.comic-img) {
       grid-row: 1 / span 1;
       grid-column: 1 / span 2;
     }
   }
 
-  .comic img {
+  .comic :global(.comic-img) {
     display: block;
     max-width: 100%;
     width: 600px;
@@ -210,7 +216,7 @@
     {#if comic.before}
       <a
         href="/comics/{comic.before}"
-        rel="preload"
+        rel="prefetch"
         class="arrow-link"
         aria-label="Before">
         <span class="before-arrow" />
@@ -218,14 +224,15 @@
     {:else}
       <span disabled class="before-arrow" aria-label="Before" />
     {/if}
-    <img
+    <Comic
       src={relativeComicSrc(comic)}
       alt={comic.alt}
-      title={comic.hoverText} />
+      title={comic.hoverText}
+      class="comic-img" />
     {#if comic.after}
       <a
         href="/comics/{comic.after}"
-        rel="preload"
+        rel="prefetch"
         class="arrow-link"
         aria-label="After">
         <span class="after-arrow" />
