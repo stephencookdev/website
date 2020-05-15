@@ -12,6 +12,5 @@ deploy:
   skip_cleanup: true
   region: eu-west-1
   local_dir: __sapper__/export
-  upload-dir: test
   on:
     branch: master
