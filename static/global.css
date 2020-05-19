@@ -134,7 +134,8 @@ section .content {
     padding: 2rem 1rem;
   }
 }
-section h2 {
+section h2,
+main h2 {
   font-family: "Inconsolata", monospace;
   font-size: 1.5rem;
   font-weight: 700;
@@ -142,21 +143,25 @@ section h2 {
   color: #111;
   text-transform: uppercase;
 }
-section a {
+section a,
+main a {
   color: #e04e1c;
 }
 section a:hover,
-section a:focus {
+section a:focus,
+main a:hover,
+main a:focus {
   outline: none;
   color: #fafafa;
   background: #e04e1c;
 }
-section h2::selection,
-section p::selection {
+section *::selection,
+main *::selection {
   color: #fafafa;
   background: #e04e1c;
 }
-section a::selection {
+section a::selection,
+main a::selection {
   color: #222;
   background: #e04e1c;
 }
@@ -164,25 +169,29 @@ section a::selection {
 .content :first-child {
   margin-top: 0;
 }
-section p {
+section p,
+main p {
   font-size: 1.2rem;
   line-height: 1.5;
   margin: 1.6rem 0 0;
   color: #222;
 }
 @media (max-width: 800px) {
-  section p {
-    font-size: 1.5rem;
+  section p,
+  main p {
+    font-size: 1.3rem;
   }
 }
-section h2 + p {
+section h2 + p,
+main h2 + p {
   margin-top: 0.6rem;
 }
 
 section ul {
   padding-left: 2rem;
 }
-section ul li {
+section ul li,
+main ul li {
   list-style: none;
   position: relative;
   font-size: 1.2rem;
@@ -191,13 +200,15 @@ section ul li {
   color: #222;
 }
 @media (max-width: 800px) {
-  section ul li {
-    font-size: 1.5rem;
+  section ul li,
+  main ul li {
+    font-size: 1.3rem;
   }
 }
-section ul li:after {
+section ul li:after,
+main ul li:after {
   position: absolute;
-  top: calc(50% - 1px);
+  top: 0.9rem;
   left: calc(-1rem - 1px);
   display: block;
   width: 2px;
@@ -205,4 +216,57 @@ section ul li:after {
   background: #999;
   content: "";
   pointer-events: none;
+}
+
+main > :not(img) {
+  max-width: 680px;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 800px) {
+  main > :not(img) {
+    max-width: none;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+main ul {
+  padding-left: 6rem;
+}
+
+@media (max-width: 800px) {
+  main ul {
+    padding-left: 3rem;
+  }
+}
+
+section hr,
+main hr {
+  margin: 5rem auto;
+  border-top: 2px solid #e04e1c;
+  padding: 0;
+  width: 5rem;
+}
+
+@media (max-width: 800px) {
+  section hr,
+  main hr {
+    margin: 4.5rem auto;
+  }
+}
+
+main > img {
+  display: block;
+  max-width: 100%;
+  margin: 3rem auto;
+}
+
+main {
+  margin-bottom: 6rem;
 }

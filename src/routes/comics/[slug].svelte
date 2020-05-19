@@ -5,7 +5,7 @@
     const res = await this.fetch(`comics/${params.slug}.json`);
     const comic = await res.json();
     if (res.status !== 200) {
-      return this.error(res.status, data.message);
+      return this.error(res.status, comic.message);
     }
 
     // we don't do anything with this, we just want to preload it for speed of
@@ -89,7 +89,7 @@
 
   h2 {
     text-align: center;
-    margin: 3rem 0 2rem;
+    margin: 3rem auto 2rem;
   }
 
   .comic {
