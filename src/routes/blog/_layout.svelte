@@ -46,7 +46,7 @@
 
   main :global(h2) {
     text-align: center;
-    margin: 3rem auto 2rem;
+    margin: 3rem auto;
   }
 
   main :global(h2 small) {

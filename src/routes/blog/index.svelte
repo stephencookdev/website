@@ -11,12 +11,45 @@
 </script>
 
 <script>
+  import HumanDate from "../../components/human-date.svelte";
+
   export let posts;
 </script>
 
+<style>
+  .post h2 {
+    text-align: left;
+    margin: 3rem 0 1rem;
+    display: inline-block;
+    background: inherit;
+    color: inherit;
+  }
+
+  .published {
+    display: flex;
+    align-items: center;
+    color: #999;
+    font-style: italic;
+    font-weight: 100;
+    flex-wrap: wrap;
+  }
+
+  .post p {
+    margin: 0.6rem 0 3rem;
+  }
+</style>
+
 {#each posts as post}
-  <div>
-    <h2>{post.title}</h2>
-    <p>{post.subtitle}</p>
-  </div>
+  {#if post.live}
+    <div class="post">
+      <a href="/blog/{post.slug}" rel="prefetch">
+        <h2>{post.title}</h2>
+      </a>
+      <span class="published">
+        Posted on
+        <HumanDate date={post.published} />
+      </span>
+      <p>{post.opening}</p>
+    </div>
+  {/if}
 {/each}
