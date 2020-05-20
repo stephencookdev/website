@@ -4,10 +4,12 @@
 </script>
 
 <BlogMeta
+  slug="in-defence-of-arbitrary"
   title="In Defence of the Arbitrary"
   subtitle="The Art of Getting Things Done with Deadlines"
   headerImage="./blog/in-defence-of-arbitrary/header.jpg"
   headerAlt="A person writing a list of goals"
+  keywords="goals,resolutions"
   published="2020-01-07">
   true
 </BlogMeta>

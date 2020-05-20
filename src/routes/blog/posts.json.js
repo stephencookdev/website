@@ -25,9 +25,7 @@ const posts = glob
       .replace(/[\s]+/g, " ")
       .trim();
 
-    const slug = pLoc.replace(/\.svelte$/, "");
-
-    const meta = { slug, opening };
+    const meta = { opening };
     metaNode.attrs.forEach((attr) => {
       meta[attr.name] = attr.value;
     });
