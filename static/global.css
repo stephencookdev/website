@@ -249,6 +249,7 @@ main ul {
 section hr,
 main hr {
   margin: 5rem auto;
+  border: 0;
   border-top: 2px solid #e04e1c;
   padding: 0;
   width: 5rem;
