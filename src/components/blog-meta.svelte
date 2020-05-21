@@ -27,6 +27,7 @@
   :global(.twitter-follow-button) {
     display: none;
     margin-left: 0.7rem;
+    margin-top: -0.45rem;
   }
   :global(.twitter-follow-button-rendered) {
     display: block;
@@ -35,7 +36,7 @@
     :global(.twitter-follow-button) {
       width: 100% !important;
       margin-left: 0;
-      margin-top: 0.7rem;
+      margin-top: 0.3rem;
     }
   }
 </style>

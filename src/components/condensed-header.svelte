@@ -38,7 +38,7 @@
     }
   }
   nav ul a {
-    padding: 0.5rem;
+    padding: 0.7rem 0.5rem 0.3rem;
     color: #fafafa;
     font-size: 1.2rem;
     font-weight: 100;

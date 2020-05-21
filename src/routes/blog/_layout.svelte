@@ -10,9 +10,10 @@
 
   main :global(h2 small) {
     display: block;
-    font-weight: 500;
+    font-weight: 400;
     text-transform: none;
     font-size: 0.9rem;
+    margin-top: 0.1rem;
   }
 
   main :global(blockquote) {
@@ -20,8 +21,8 @@
     margin-bottom: 3rem;
   }
   main :global(blockquote p) {
-    margin-bottom: 0.7rem;
-    font-weight: 100;
+    margin-bottom: 0.6rem;
+    font-style: italic;
     position: relative;
   }
   main :global(blockquote p::before),
@@ -29,17 +30,18 @@
     position: absolute;
     font-size: 4rem;
     line-height: 0;
+    font-style: normal;
     color: #e04e1c;
   }
   main :global(blockquote p::before) {
     content: "“";
-    top: 1rem;
-    left: -1.5rem;
+    top: 1.3rem;
+    left: -1.4rem;
     margin-left: -0.5rem;
   }
   main :global(blockquote p::after) {
     content: "”";
-    margin-top: 1.5rem;
+    margin-top: 1.7rem;
     margin-left: 0.5rem;
   }
   main :global(blockquote cite) {

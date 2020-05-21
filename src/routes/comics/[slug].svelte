@@ -120,7 +120,7 @@
     position: relative;
     font-family: "Inconsolata", monospace;
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 400;
     text-transform: uppercase;
     text-decoration: none;
   }
