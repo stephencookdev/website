@@ -9,7 +9,9 @@
   export let keywords;
   export let published;
 
-  const absoluteHeaderImage = `https://stephencook.dev/${headerImage}`;
+  const makeAbsolute = url =>
+    `https://stephencook.dev${url.startsWith("/") ? "" : "/"}${url}`;
+
   const canonicalBlogUrl = `https://stephencook.dev/blog/${slug}`;
 </script>
 
@@ -47,10 +49,11 @@
   <meta name="keywords" content={keywords} />
   <meta property="og:type" content="article" />
   <meta property="og:title" content={title} />
+  <link rel="canonical" href={canonicalBlogUrl} />
   <meta property="og:url" content={canonicalBlogUrl} />
-  <meta property="og:image" content={absoluteHeaderImage} />
+  <meta property="og:image" content={makeAbsolute(headerImage)} />
   <meta property="og:description" content={subtitle} />
-  <meta name="twitter:image" content={absoluteHeaderImage} />
+  <meta name="twitter:image" content={makeAbsolute(headerImage)} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@StephenCookDev" />
   <meta name="twitter:creator" content="@StephenCookDev" />

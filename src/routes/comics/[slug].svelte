@@ -145,6 +145,7 @@
   <meta name="description" content="{comic.title} | {comic.hoverText}" />
   <meta name="keywords" content={comicKeywords(comic)} />
   <meta property="og:title" content={comic.title} />
+  <link rel="canonical" href={canonicalComicUrl} />
   <meta property="og:url" content={canonicalComicUrl} />
   <meta property="og:image" content={absoluteComicSrc(comic)} />
   <meta name="twitter:image" content={absoluteComicSrc(comic)} />
