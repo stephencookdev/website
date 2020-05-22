@@ -1,5 +1,13 @@
 const comics = [
   {
+    published: "2020-05-22",
+    slug: "toy-api",
+    title: "Toy API",
+    hoverText:
+      "sure, I hate dealing with third-party APIs, but NOW I'm doing it OUTSIDE of work, so I'm sure it'll be fun",
+    keywords: "dev, api, time-management",
+  },
+  {
     published: "2020-05-15",
     slug: "find-that-music",
     title: "Find That Music",
