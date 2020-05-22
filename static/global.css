@@ -275,9 +275,10 @@ main {
 
 code {
   font-family: monospace;
-  padding: 0.15rem 0.5rem;
+  padding: 0 0.5em;
   border-radius: 3px;
   white-space: nowrap;
-  color: #fafafa;
-  background: #6a3459;
+  color: #6a3459;
+  background: rgba(106, 52, 89, 0.05);
+  text-transform: none;
 }
