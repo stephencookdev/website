@@ -1,4 +1,6 @@
 <script context="module">
+  const DEV_MODE = process.env.NODE_ENV !== "production";
+
   export async function preload() {
     const res = await this.fetch(`blog/posts.json`);
     const posts = await res.json();
@@ -37,11 +39,15 @@
   .post p {
     margin: 0.6rem 0 3rem;
   }
+
+  .dev-post {
+    opacity: 0.5;
+  }
 </style>
 
 {#each posts as post}
-  {#if post.live}
-    <div class="post">
+  {#if DEV_MODE || post.live}
+    <div class={'post' + (!post.live ? ' dev-post' : '')}>
       <a href="/blog/{post.slug}" rel="prefetch">
         <h2>{post.title}</h2>
       </a>
