@@ -1,5 +1,5 @@
 <script context="module">
-  const relativeComicSrc = comic => `/comics/${comic.slug}.png`;
+  const relativeComicSrc = slug => `/comics/${slug}.png`;
 
   export async function preload({ params }) {
     const res = await this.fetch(`comics/${params.slug}.json`);
@@ -10,7 +10,7 @@
 
     // we don't do anything with this, we just want to preload it for speed of
     // it loading later
-    this.fetch(relativeComicSrc(comic));
+    this.fetch(relativeComicSrc(comic.slug));
 
     return { comic };
   }
@@ -22,8 +22,8 @@
 
   export let comic;
 
-  const absoluteComicSrc = comic =>
-    `https://stephencook.dev${relativeComicSrc(comic)}`;
+  const absoluteComicSrc = slug =>
+    `https://stephencook.dev${relativeComicSrc(slug)}`;
   const canonicalComicUrl = comic =>
     `https://stephencook.dev/comics/${comic.slug}/`;
 
@@ -147,8 +147,8 @@
   <meta property="og:title" content={comic.title} />
   <link rel="canonical" href={canonicalComicUrl} />
   <meta property="og:url" content={canonicalComicUrl} />
-  <meta property="og:image" content={absoluteComicSrc(comic)} />
-  <meta name="twitter:image" content={absoluteComicSrc(comic)} />
+  <meta property="og:image" content={absoluteComicSrc(comic.preview)} />
+  <meta name="twitter:image" content={absoluteComicSrc(comic.preview)} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@StephenCookDev" />
   <meta name="twitter:creator" content="@StephenCookDev" />
@@ -176,7 +176,7 @@
       <span disabled class="before-arrow" aria-label="Before" />
     {/if}
     <Comic
-      src={relativeComicSrc(comic)}
+      src={relativeComicSrc(comic.slug)}
       alt={comic.alt}
       title={comic.hoverText}
       class="comic-img" />

@@ -51,6 +51,7 @@ export function get(req, res, next) {
 
     const matchingComic = {
       ...comics[matchingComicIndex],
+      preview: `${comics[matchingComicIndex].slug}-preview`,
       before: comics[matchingComicIndex + 1]
         ? comics[matchingComicIndex + 1].slug
         : null,
