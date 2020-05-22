@@ -272,3 +272,12 @@ main hr {
 main {
   margin-bottom: 6rem;
 }
+
+code {
+  font-family: monospace;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  white-space: nowrap;
+  color: #fafafa;
+  background: #6a3459;
+}
