@@ -12,8 +12,9 @@
     display: block;
     font-weight: 400;
     text-transform: none;
-    font-size: 0.9rem;
-    margin-top: 0.1rem;
+    font-size: 1.3rem;
+    margin-top: 1rem;
+    color: #555;
   }
 
   main :global(blockquote) {
