@@ -12,7 +12,7 @@
   headerAlt="Mario Kart alongside a sample 13 lines of HTML"
   keywords="mario-kart,css,silly"
   published="2018-04-16">
-  true
+  false
 </BlogMeta>
 
 <p>
