@@ -269,10 +269,6 @@ main hr {
   }
 }
 
-main {
-  margin-bottom: 6rem;
-}
-
 code {
   font-family: monospace;
   padding: 0 0.5em;
@@ -281,4 +277,14 @@ code {
   color: #6a3459;
   background: rgba(106, 52, 89, 0.05);
   text-transform: none;
+}
+
+main > code {
+  /* TODO remove this once using a proper code highlighter */
+  display: block;
+  white-space: pre;
+}
+
+main {
+  margin-bottom: 6rem;
 }
