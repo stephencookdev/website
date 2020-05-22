@@ -197,7 +197,7 @@ main ul li {
   position: relative;
   font-size: 1.2rem;
   line-height: 1.5;
-  margin: 0.8rem 0 0;
+  margin: 0.5rem 0 0;
   color: #222;
 }
 @media (max-width: 800px) {
@@ -209,17 +209,24 @@ main ul li {
 section ul li:after,
 main ul li:after {
   position: absolute;
-  top: 0.9rem;
-  left: calc(-1rem - 1px);
+  top: 0.6rem;
+  left: -2rem;
   display: block;
-  width: 2px;
-  height: 2px;
-  background: #999;
+  width: 3px;
+  height: 3px;
+  background: #e04e1c;
   content: "";
   pointer-events: none;
 }
 
-main > :not(img) {
+main > img,
+main > iframe {
+  display: block;
+  max-width: 100%;
+  margin: 3rem auto;
+}
+
+main > :not(img):not(iframe) {
   max-width: 680px;
   padding-left: 4rem;
   padding-right: 4rem;
@@ -227,23 +234,22 @@ main > :not(img) {
   margin-right: auto;
 }
 
+main > ul {
+  /* +2rem, but then another +2rem to make it even out on both sides */
+  padding-left: 8rem !important;
+}
+
 @media (max-width: 800px) {
-  main > :not(img) {
+  main > :not(img):not(iframe) {
     max-width: none;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     margin-left: auto;
     margin-right: auto;
   }
-}
 
-main ul {
-  padding-left: 6rem;
-}
-
-@media (max-width: 800px) {
-  main ul {
-    padding-left: 3rem;
+  main > ul {
+    padding-left: 3.5rem !important;
   }
 }
 
@@ -261,12 +267,6 @@ main hr {
   main hr {
     margin: 4.5rem auto;
   }
-}
-
-main > img {
-  display: block;
-  max-width: 100%;
-  margin: 3rem auto;
 }
 
 main {
