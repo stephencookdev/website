@@ -13,7 +13,7 @@
   headerAlt="2 people stood in a glass house with broken windows"
   keywords="react,ssr,how-to,error"
   published="2020-05-25">
-  true
+  false
 </BlogMeta>
 
 <p>
