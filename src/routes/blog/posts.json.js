@@ -7,6 +7,19 @@ const mostRecentFirst = (a, b) => -a.published.localeCompare(b.published);
 
 const cwd = "src/routes/blog/";
 
+const _getFlattenedText = (node) => {
+  if (node.value) return node.value;
+  if (node.childNodes) return node.childNodes.map(getFlattenedText).join("");
+
+  return "";
+};
+const getFlattenedText = (node) => {
+  return _getFlattenedText(node)
+    .replace(/\n/g, " ")
+    .replace(/[\s]+/g, " ")
+    .trim();
+};
+
 const posts = glob
   .sync("*.svelte", {
     cwd,
@@ -20,10 +33,7 @@ const posts = glob
     );
 
     const firstPara = root.childNodes.find((node) => node.tagName === "p");
-    const opening = firstPara.childNodes[0].value
-      .replace(/\n/g, " ")
-      .replace(/[\s]+/g, " ")
-      .trim();
+    const opening = getFlattenedText(firstPara);
 
     const meta = { opening };
     metaNode.attrs.forEach((attr) => {
