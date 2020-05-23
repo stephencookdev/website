@@ -3,7 +3,7 @@ node_js:
   - 10
 script:
   - mkdir -p __sapper__/export
-  - npm run build
+  - npm run build-prod
 deploy:
   provider: s3
   access_key_id: $AWS_ACCESS_ID
