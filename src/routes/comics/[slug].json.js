@@ -1,3 +1,5 @@
+const Jimp = require("jimp");
+
 const comics = [
   {
     published: "2020-05-22",
@@ -38,7 +40,22 @@ const comics = [
   },
 ];
 
-export function get(req, res, next) {
+const generatePreviewImage = async (slug) => {
+  const comicBase = `comics/${slug}`;
+
+  const comicImage = await Jimp.read(`static/${comicBase}.png`);
+
+  comicImage.crop(
+    0,
+    0,
+    comicImage.bitmap.width,
+    comicImage.bitmap.height * 0.58
+  );
+
+  await comicImage.writeAsync(`__sapper__/export/${comicBase}-preview.png`);
+};
+
+export async function get(req, res, next) {
   const { slug } = req.params;
 
   const matchingComicIndex =
@@ -59,6 +76,8 @@ export function get(req, res, next) {
         ? comics[matchingComicIndex - 1].slug
         : null,
     };
+
+    await generatePreviewImage(matchingComic.slug);
 
     res.end(JSON.stringify(matchingComic));
   } else {
