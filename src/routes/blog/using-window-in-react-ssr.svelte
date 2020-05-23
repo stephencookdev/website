@@ -7,8 +7,8 @@
 <BlogMeta
   slug="using-window-in-react-ssr"
   title="Using window in React SSR: The Complete Guide"
-  subtitle="What “window is not defined” and “expected server html to div”
-  really mean"
+  subtitle="What “window is not defined” and “expected server html to contain
+  div” really mean"
   headerImage="/blog/using-window-in-react-ssr/broken-window.jpg"
   headerAlt="2 people stood in a glass house with broken windows"
   keywords="react,ssr,how-to,error"
@@ -17,14 +17,18 @@
 </BlogMeta>
 
 <p>
-  You’ve just made your React app Server Side Rendered (SSR), and you’re greeted
-  with a terrifying “uncaught reference error” telling you that
+  After adding Server Side Rendering (SSR) to your React app, you’re greeted
+  with a terrifying “uncaught reference error”:
+</p>
+
+<p>
   <code>window is not defined</code>
-  , or
-  <code>document is not defined</code>
-  . You side-step that, and now you see some warnings telling you
-  <code>Warning: Expected server HTML to contain a div</code>
-  .
+</p>
+
+<p>If you side-step that issue, you’re greeted with the equally unhelpful:</p>
+
+<p>
+  <code>Expected server HTML to contain a div</code>
 </p>
 
 <p>Uhh… What’s going on?</p>
@@ -43,12 +47,10 @@
 </p>
 
 <p>
-  What you need to remember is that this is a
-  <i>server</i>
-  , so things like
+  What you need to remember is that on a server, things like
   <code>window.innerWidth</code>
-  simply does not make sense. What’s the width of the browser window? There is
-  no browser window. Because of this, servers simply don’t provide a
+  simply do not make sense. What’s the width of the browser window? There is no
+  browser window. Because of this, servers simply don’t provide a
   <code>window</code>
   global.
 </p>
@@ -56,41 +58,49 @@
 <p>
   The same goes for
   <code>document</code>
-  .
+  , and the
+  <code>document is not defined</code>
+  error, as well as some other browser globals.
 </p>
 
 <p>
-  Sometimes it’s not even your code that depends on
+  Sometimes, it’s not even your code that depends on
   <code>window</code>
-  ! At the time of writing this, hellosign-embedded, react-stripe-elements,
-  react-chartjs all depend on
+  … At the time of writing this,
+  <b>hellosign-embedded,</b>
+  <b>react-stripe-elements,</b>
+  and
+  <b>react-chartjs</b>
+  all depend on
   <code>window</code>
   and will break if you try to render them with SSR.
 </p>
 
 <p>
-  To get around this, you can check before using
+  To get around this, we can check if
   <code>window</code>
-  in your app, by running
+  is available before using it, by running something like
   <code>if (typeof window === "undefined") return null</code>
-  .
+  . This lets us run the same code on the server and the browser.
 </p>
 
 <h2>Hydration Warnings</h2>
 
 <p>
-  But wait! Although you can just
+  But wait! Although you
+  <i>can</i>
+  just
   <code>return null</code>
-  if
+  in your component’s render function if
   <code>window</code>
-  isn’t defined — but this is going to run you into more problems, if you don’t
+  isn’t defined —this is only going to run you into more problems if you don’t
   understand what’s going on.
 </p>
 
 <p>
   When
   <code>ReactDOM.hydrate</code>
-  runs, it builds up the VDOM of your app fully on the user’s browser, and then
+  runs, it builds up the VDOM of your app on the user’s browser, and then
   compares this to the
   <i>actual</i>
   DOM (which has been SSR’d with some initial content).
@@ -109,9 +119,11 @@
 <p>But why do we care? Can’t we just supress or ignore the warning?</p>
 
 <p>
-  So, yes, you can supress the warning with
+  So, you
+  <i>can</i>
+  supress the warning with
   <code>suppressHydrationWarning</code>
-  — but you shouldn’t! Doing so can seriously break your app.
+  — but you shouldn’t. Doing so can seriously break your app.
 </p>
 
 <p>
@@ -127,13 +139,13 @@
 }`}
 </code>
 
-<p>Then you might never see your 🍩.</p>
+<p>Then you might never see your precious 🍩.</p>
 
 <p>
   You
   <i>might</i>
   get away with it, depending on how the React internals happen to end up
-  rendering this specific component… But in my experience you have about a 50/50
+  rendering the specific component… But in my experience you have about a 50/50
   chance of something going wrong.
 </p>
 
@@ -149,8 +161,8 @@
 </p>
 
 <p>
-  Fortunately, we can create a very simply React hook in order to detect if
-  we’re on the server or not.
+  Fortunately, we can create a small React hook in order to detect if we’re on
+  the server or not.
 </p>
 
 <code>
@@ -162,7 +174,8 @@ const useIsSsr = () => {
   const [isSsr, setIsSsr] = useState(true);
 
   useEffect(() => {
-    // \`useEffect\` never runs on the server, so we must be on the client
+    // \`useEffect\` never runs on the server, so we must be on the client if
+    // we hit this block
     setIsSsr(false);
   }, []);
 
@@ -187,9 +200,9 @@ const useIsSsr = () => {
 </code>
 
 <p>
-  And this guarantees that our initial browser render will match the initial
-  server render. Then, we immediately render again, filling in all of the
-  components that need
+  This guarantees that our initial browser render will match the initial server
+  render. Then, we immediately render again, filling in all of the components
+  that need
   <code>window</code>
   , all without confusing ReactDOM.
 </p>
@@ -204,10 +217,15 @@ const useIsSsr = () => {
 </p>
 
 <p>
-  The key here is to do a bit more than just
+  The key here is to do more than just
   <code>return null</code>
-  . Although this is super easy, it means that in the initial payload we’re
-  literally not sending the component’s markup at all.
+  when on the server. Although
+  <code>return null</code>
+  is super easy, it means that in the initial payload we’re not sending the
+  component’s markup at all. So when we eventually boot up the app fully on the
+  browser, the component
+  <i>suddenly</i>
+  appears — since it wasn’t there at all before.
 </p>
 
 <p>
@@ -288,7 +306,7 @@ const useIsSsr = () => {
 <p>
   If
   <i>outside</i>
-  of a component render, then you can directly check
+  of a component render, then directly check
   <code>typeof window === "undefined"</code>
   to check if you’re on the server, or the browser.
 </p>
