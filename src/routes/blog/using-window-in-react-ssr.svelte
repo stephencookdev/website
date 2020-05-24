@@ -13,7 +13,7 @@
   headerAlt="someone's hand placed on a rainy window, looking out at other
   windows"
   keywords="react,ssr,how-to,error"
-  published="2020-05-25">
+  published="2020-05-27">
   false
 </BlogMeta>
 
