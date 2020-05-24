@@ -36,7 +36,8 @@ detectKonamiCode(() => {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;`;
+    display: block;
+    z-index: 999;`;
   document.body.appendChild(luigi);
 
   setTimeout(() => {
