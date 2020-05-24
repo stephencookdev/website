@@ -273,7 +273,7 @@ code {
   font-family: monospace;
   padding: 0 0.5em;
   border-radius: 3px;
-  white-space: nowrap;
+  white-space: pre-wrap;
   color: #6a3459;
   background: rgba(106, 52, 89, 0.05);
   text-transform: none;
