@@ -16,7 +16,11 @@
       });
 
       observer.observe(container);
-      return () => observer.unobserve(container);
+      return () => {
+        if (!hasIntersected) {
+          observer.unobserve(container);
+        }
+      };
     }
 
     function handler() {
@@ -33,7 +37,11 @@
     }
 
     window.addEventListener("scroll", handler);
-    return () => window.removeEventListener("scroll", handler);
+    return () => {
+      if (!hasIntersected) {
+        window.removeEventListener("scroll", handler);
+      }
+    };
   });
 </script>
 
