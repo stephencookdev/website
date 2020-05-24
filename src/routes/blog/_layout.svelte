@@ -1,5 +1,23 @@
+<script context="module">
+  export async function preload() {
+    const res = await this.fetch(`blog/posts.json`);
+    const posts = await res.json();
+    if (res.status !== 200) {
+      return this.error(res.status, posts.message);
+    }
+
+    return { posts };
+  }
+</script>
+
 <script>
   import CondensedHeader from "../../components/condensed-header.svelte";
+  import EmailListSubscribe from "../../components/email-list-subscribe.svelte";
+
+  export let segment;
+  export let posts;
+
+  $: specificPost = posts.find(post => post.slug === segment);
 </script>
 
 <style>
@@ -55,10 +73,48 @@
       margin-left: 0;
     }
   }
+
+  .bio {
+    margin-top: 5rem;
+  }
+
+  .me {
+    float: left;
+    height: 6.5rem;
+    margin: 1.6rem 1.6rem 1rem 0;
+  }
+
+  .bio-title {
+    font-family: "Inconsolata", monospace;
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: block;
+    width: fit-content;
+  }
 </style>
 
 <CondensedHeader />
 
 <main>
   <slot />
+
+  {#if specificPost}
+    <EmailListSubscribe />
+
+    <div class="bio">
+      <a href="/" class="bio-title">Stephen Cook Dev</a>
+      <img src="/me.jpg" alt="Stephen Cook" class="me" />
+
+      <p>
+        I’m Stephen. I gave up a promising Mario Kart career in 2014, to instead
+        focus on software engineering full-time.
+      </p>
+      <p>
+        Why not
+        <a href="https://twitter.com/stephencookdev">follow me on Twitter?</a>
+      </p>
+    </div>
+  {/if}
 </main>

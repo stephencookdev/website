@@ -172,11 +172,11 @@
   <div class="content">
     <h2>Who Am I?</h2>
     <p>
-      I'm Stephen. I gave up a promising Mario Kart career in 2014, to instead
+      I’m Stephen. I gave up a promising Mario Kart career in 2014, to instead
       focus on software engineering full-time.
     </p>
     <p>
-      I'm reasonably full-stack, but I much prefer to focus on the front-end.
+      I’m reasonably full-stack, but I much prefer to focus on the front-end.
       Feel free to check out
       <a href="https://www.linkedin.com/in/scook628/">my LinkedIn</a>
       if you want some more words about projects and stacks.
@@ -190,7 +190,7 @@
     </p>
     <p>
       Thread is trying to make it easy to find clothes online, using fancy
-      machine learning and in-house stylists to show you only clothes you'll
+      machine learning and in-house stylists to show you only clothes you’ll
       like. It is a pretty cool company,
       <a href="https://thread.com/jobs">if you were looking&hellip;</a>
     </p>

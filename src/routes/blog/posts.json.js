@@ -45,6 +45,11 @@ const posts = glob
   })
   .sort(mostRecentFirst);
 
+for (let i = 0; i < posts.length; i++) {
+  if (i > 0) posts[i].before = posts[i - 1].slug;
+  if (i < posts.length - 1) posts[i].after = posts[i + 1].slug;
+}
+
 export function get(req, res, next) {
   res.writeHead(200, {
     "Content-Type": "application/json",
