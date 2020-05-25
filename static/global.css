@@ -227,7 +227,7 @@ main > iframe {
 }
 
 main > :not(img):not(iframe) {
-  max-width: 680px;
+  max-width: 42.5rem;
   padding-left: 4rem;
   padding-right: 4rem;
   margin-left: auto;
@@ -241,7 +241,6 @@ main > ul {
 
 @media (max-width: 800px) {
   main > :not(img):not(iframe) {
-    max-width: none;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     margin-left: auto;
@@ -269,7 +268,7 @@ main hr {
   }
 }
 
-code {
+p > code {
   font-family: monospace;
   padding: 0 0.5em;
   border-radius: 3px;
@@ -277,12 +276,6 @@ code {
   color: #6a3459;
   background: rgba(106, 52, 89, 0.05);
   text-transform: none;
-}
-
-main > code {
-  /* TODO remove this once using a proper code highlighter */
-  display: block;
-  white-space: pre;
 }
 
 main {

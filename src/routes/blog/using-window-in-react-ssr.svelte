@@ -1,7 +1,6 @@
 <script>
   import BlogMeta from "../../components/blog-meta.svelte";
-  import Quote from "../../components/quote.svelte";
-  import CodeSandbox from "../../components/code-sandbox.svelte";
+  import Code from "../../components/code.svelte";
 </script>
 
 <BlogMeta
@@ -129,14 +128,15 @@
   the VDOM. In other words, if you do something like this:
 </p>
 
-<code>
-  {`const MyComponent = () => {
+<Code
+  language="javascript"
+  code={`
+const MyComponent = () => {
   // Careful, this can cause hydration issues and break your app!
   if (typeof window === "undefined") return null;
 
   return <div>🍩</div>;
-}`}
-</code>
+}`} />
 
 <p>
   Then you might
@@ -166,8 +166,10 @@
   or not.
 </p>
 
-<code>
-  {`import { useState, useEffect } from "react";
+<Code
+  language="javascript"
+  code={`
+import { useState, useEffect } from "react";
 
 const useIsSsr = () => {
   // we always start off in "SSR mode", to ensure our initial browser render
@@ -182,8 +184,7 @@ const useIsSsr = () => {
 
   return isSsr;
 }
-`}
-</code>
+`} />
 
 <p>
   Now we can use this hook instead of checking for
@@ -191,14 +192,15 @@ const useIsSsr = () => {
   directly.
 </p>
 
-<code>
-  {`const MyComponent = () => {
+<Code
+  language="javascript"
+  code={`
+const MyComponent = () => {
   const isSsr = useIsSsr();
   if (isSsr) return null;
 
   return <div>🍩</div>;
-}`}
-</code>
+}`} />
 
 <p>
   This hook guarantees that our initial browser render matches the initial
@@ -246,8 +248,10 @@ const useIsSsr = () => {
 
 <p>Let’s take this component, for example:</p>
 
-<code>
-  {`const WindowSizePredictor = () => {
+<Code
+  language="javascript"
+  code={`
+const WindowSizePredictor = () => {
   const isSsr = useIsSsr();
   if (isSsr) return null;
 
@@ -263,13 +267,14 @@ const useIsSsr = () => {
     </div>
   );
 }
-`}
-</code>
+`} />
 
 <p>We might prevent the flash by changing it to this:</p>
 
-<code>
-  {`const WindowSizePredictor = () => {
+<Code
+  language="javascript"
+  code={`
+const WindowSizePredictor = () => {
   const isSsr = useIsSsr();
 
   const screenWidth = isSsr ? null : window.innerWidth;
@@ -287,8 +292,7 @@ const useIsSsr = () => {
     </div>
   );
 }
-`}
-</code>
+`} />
 
 <h2>Summary</h2>
 
