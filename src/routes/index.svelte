@@ -1,3 +1,13 @@
+<script context="module">
+  // Complete hack! 😔 Sapper has _no way_ for a dynamic sitemap.xml to be picked
+  // up in the `sapper export` without a direct link to it.
+  // So, we force this index to "request" it in SSR-mode, to force Sapper to
+  // build it.
+  export function preload({ params, query }) {
+    return this.fetch("sitemap.xml");
+  }
+</script>
+
 <style>
   header nav {
     margin-top: 10vh;

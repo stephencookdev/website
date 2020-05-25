@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /blog/preview
+Disallow: /misc
+
+Sitemap: https://stephencook.dev/sitemap.xml

@@ -40,6 +40,10 @@ const comics = [
   },
 ];
 
+export const getAllDirect = () => {
+  return comics;
+};
+
 const generatePreviewImage = async (slug) => {
   const comicBase = `comics/${slug}`;
 

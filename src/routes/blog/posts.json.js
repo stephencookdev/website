@@ -50,6 +50,10 @@ for (let i = 0; i < posts.length; i++) {
   if (i < posts.length - 1) posts[i].after = posts[i + 1].slug;
 }
 
+export function getDirect() {
+  return posts;
+}
+
 export function get(req, res, next) {
   res.writeHead(200, {
     "Content-Type": "application/json",
