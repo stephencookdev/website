@@ -23,7 +23,7 @@ const getFlattenedText = (node) => {
 const posts = glob
   .sync("*.svelte", {
     cwd,
-    ignore: ["index.svelte", "_*.svelte"],
+    ignore: ["index.svelte", "preview.svelte", "_*.svelte"],
   })
   .map((pLoc) => {
     const file = fs.readFileSync(path.join(cwd, pLoc));
