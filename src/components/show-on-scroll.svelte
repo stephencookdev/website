@@ -10,17 +10,10 @@
     if (typeof IntersectionObserver !== "undefined") {
       const observer = new IntersectionObserver(entries => {
         hasIntersected = entries[0].isIntersecting;
-        if (hasIntersected) {
-          observer.unobserve(container);
-        }
       });
 
       observer.observe(container);
-      return () => {
-        if (!hasIntersected) {
-          observer.unobserve(container);
-        }
-      };
+      return () => observer.unobserve(container);
     }
 
     function handler() {
@@ -37,16 +30,14 @@
     }
 
     window.addEventListener("scroll", handler);
-    return () => {
-      if (!hasIntersected) {
-        window.removeEventListener("scroll", handler);
-      }
-    };
+    return () => window.removeEventListener("scroll", handler);
   });
 </script>
 
+<div
+  bind:this={container}
+  class={placeholderClass}
+  style={hasIntersected ? 'position: absolute; opacity: 0; pointer-events: none' : ''} />
 {#if hasIntersected}
   <slot />
-{:else}
-  <div bind:this={container} class={placeholderClass} />
 {/if}

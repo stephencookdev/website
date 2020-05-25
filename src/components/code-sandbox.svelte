@@ -15,6 +15,7 @@
     min-height: 500px;
     border: 0;
     padding: 0;
+    margin: 3rem auto;
     max-width: none;
   }
   :global(.sandbox-iframe-placeholder) {
