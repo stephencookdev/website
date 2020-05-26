@@ -13,7 +13,7 @@
   windows"
   keywords="react,ssr,how-to,error"
   published="2020-05-27">
-  false
+  true
 </BlogMeta>
 
 <p>
