@@ -1,0 +1,60 @@
+body {
+  color: #111;
+  font-family: "Montserrat", sans-serif;
+}
+
+.ranking2:not(:first-of-type) {
+  margin: 128px 0 0;
+}
+.ranking2 h2 {
+  text-align: center;
+  font-family: "Literata", serif;
+  font-weight: 800;
+  font-size: 64px;
+  margin: 0;
+}
+
+.ranking1 {
+  margin: 96px 0 0;
+}
+.ranking2 + .ranking1 {
+  margin-top: 28px;
+}
+.ranking1 h3 {
+  background: #c79;
+  border-bottom: 2px solid #b68;
+  padding: 16px 8px 18px;
+  color: #fff;
+  margin: 0;
+  font-family: "Literata", serif;
+  font-weight: 300;
+  font-size: 24px;
+}
+
+.ranking0 h4 {
+  margin: 28px 0 8px;
+}
+.ranking0 p {
+  margin: 0;
+  margin-left: 8px;
+}
+
+.event-description {
+  border: 1px solid transparent;
+  cursor: text;
+}
+.event-description:hover,
+.editable-event-description {
+  border: 1px solid #bbb;
+}
+.event-description.empty {
+  font-style: italic;
+  opacity: 0.5;
+}
+
+.editable-event-description {
+  display: block;
+  width: 100%;
+  font: inherit;
+  min-height: 50vh;
+}
