@@ -13,7 +13,9 @@
     `https://stephencook.dev${url.startsWith("/") ? "" : "/"}${url}`;
 
   $: canonicalBlogUrl = `https://stephencook.dev/blog/${slug}`;
-  $: cookedSubtitle = subtitle.replace(/\n/, " ").replace(/\s+/, " ");
+
+  // bit of a hack but prettier formats Svelte in non-safe ways :(
+  $: cookedSubtitle = subtitle.replace(/\n/g, " ").replace(/\s+/g, " ");
 </script>
 
 <style>
