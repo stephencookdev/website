@@ -13,9 +13,6 @@
     `https://stephencook.dev${url.startsWith("/") ? "" : "/"}${url}`;
 
   $: canonicalBlogUrl = `https://stephencook.dev/blog/${slug}`;
-
-  // bit of a hack but prettier formats Svelte in non-safe ways :(
-  $: cookedSubtitle = subtitle.replace(/\n/g, " ").replace(/\s+/g, " ");
 </script>
 
 <style>
@@ -48,25 +45,25 @@
 
 <svelte:head>
   <title>{title} | Stephen Cook Dev</title>
-  <meta name="description" content="{title} | {cookedSubtitle}" />
+  <meta name="description" content="{title} | {subtitle}" />
   <meta name="keywords" content={keywords} />
   <meta property="og:type" content="article" />
   <meta property="og:title" content={title} />
   <link rel="canonical" href={canonicalBlogUrl} />
   <meta property="og:url" content={canonicalBlogUrl} />
   <meta property="og:image" content={makeAbsolute(headerImage)} />
-  <meta property="og:description" content={cookedSubtitle} />
+  <meta property="og:description" content={subtitle} />
   <meta name="twitter:image" content={makeAbsolute(headerImage)} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@StephenCookDev" />
   <meta name="twitter:creator" content="@StephenCookDev" />
   <meta name="twitter:title" content={title} />
-  <meta name="twitter:description" content={cookedSubtitle} />
+  <meta name="twitter:description" content={subtitle} />
 </svelte:head>
 
 <h2>
   {title}
-  <small>{cookedSubtitle}</small>
+  <small>{subtitle}</small>
 </h2>
 
 <img src={headerImage} alt={headerAlt} />
