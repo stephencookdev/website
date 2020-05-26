@@ -12,7 +12,8 @@
   const makeAbsolute = url =>
     `https://stephencook.dev${url.startsWith("/") ? "" : "/"}${url}`;
 
-  const canonicalBlogUrl = `https://stephencook.dev/blog/${slug}`;
+  $: canonicalBlogUrl = `https://stephencook.dev/blog/${slug}`;
+  $: cookedSubtitle = subtitle.replace(/\n/, " ").replace(/\s+/, " ");
 </script>
 
 <style>
@@ -45,25 +46,25 @@
 
 <svelte:head>
   <title>{title} | Stephen Cook Dev</title>
-  <meta name="description" content="{title} | {subtitle}" />
+  <meta name="description" content="{title} | {cookedSubtitle}" />
   <meta name="keywords" content={keywords} />
   <meta property="og:type" content="article" />
   <meta property="og:title" content={title} />
   <link rel="canonical" href={canonicalBlogUrl} />
   <meta property="og:url" content={canonicalBlogUrl} />
   <meta property="og:image" content={makeAbsolute(headerImage)} />
-  <meta property="og:description" content={subtitle} />
+  <meta property="og:description" content={cookedSubtitle} />
   <meta name="twitter:image" content={makeAbsolute(headerImage)} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@StephenCookDev" />
   <meta name="twitter:creator" content="@StephenCookDev" />
   <meta name="twitter:title" content={title} />
-  <meta name="twitter:description" content={subtitle} />
+  <meta name="twitter:description" content={cookedSubtitle} />
 </svelte:head>
 
 <h2>
   {title}
-  <small>{subtitle}</small>
+  <small>{cookedSubtitle}</small>
 </h2>
 
 <img src={headerImage} alt={headerAlt} />
