@@ -34,6 +34,8 @@ body {
   margin: 32px 0;
 }
 .countdown input[type="time"] {
+  display: block;
+  max-width: 100%;
   font-size: 64px;
 }
 .countdown span {
