@@ -41,7 +41,7 @@ const addSoundButtonListeners = (soundButtons, soundToVolumeMap) => {
     buttonRange.addEventListener("click", (e) => {
       e.stopPropagation();
     });
-    buttonRange.addEventListener("change", () => {
+    buttonRange.addEventListener("input", () => {
       triggerSoundChange(
         button.dataset.sound,
         buttonRange.value,
