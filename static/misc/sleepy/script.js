@@ -1,20 +1,24 @@
-const generateSoundToVolumeMap = (soundButtons) => {
+const generateSoundToVolumeMap = (audioContext, soundButtons) => {
   const map = {};
+
   soundButtons.forEach((button) => {
     const audio = new Audio(`sounds/${button.dataset.sound}`);
+
+    const track = audioContext.createMediaElementSource(audio);
+    track.connect(audioContext.destination);
     map[button.dataset.sound] = audio;
     audio.loop = true;
   });
 
   soundButtons.forEach((button) => {
     // init all to 0
-    triggerSoundChange(button, 0, map);
+    triggerSoundChange(button, 0, map, audioContext);
   });
 
   return map;
 };
 
-const triggerSoundChange = (button, rawVal, soundToVolumeMap) => {
+const triggerSoundChange = (button, rawVal, soundToVolumeMap, audioContext) => {
   const val = Math.max(0, Math.min(100, rawVal));
   const soundKey = button.dataset.sound;
 
@@ -25,28 +29,45 @@ const triggerSoundChange = (button, rawVal, soundToVolumeMap) => {
   buttonRange.value = soundToVolumeMap[soundKey].volume * 100;
 
   if (audio.paused && val > 0) {
+    if (audioContext.state === "suspended") {
+      audioContext.resume();
+    }
+
     audio.play();
   } else if (!audio.paused && val === 0) {
     audio.pause();
+
+    if (Object.values(soundToVolumeMap).every((audio) => audio.paused)) {
+      audioContext.suspend();
+    }
   }
 };
 
 const getButtonRange = (button) => button.querySelector('input[type="range"]');
 
-const addSoundButtonListeners = (soundButtons, soundToVolumeMap) => {
+const addSoundButtonListeners = (
+  soundButtons,
+  soundToVolumeMap,
+  audioContext
+) => {
   soundButtons.forEach((button) => {
     const buttonRange = getButtonRange(button);
 
     button.addEventListener("click", () => {
       const targetVal = buttonRange.value > 0 ? 0 : 100;
-      triggerSoundChange(button, targetVal, soundToVolumeMap);
+      triggerSoundChange(button, targetVal, soundToVolumeMap, audioContext);
     });
 
     buttonRange.addEventListener("click", (e) => {
       e.stopPropagation();
     });
     buttonRange.addEventListener("input", () => {
-      triggerSoundChange(button, buttonRange.value, soundToVolumeMap);
+      triggerSoundChange(
+        button,
+        buttonRange.value,
+        soundToVolumeMap,
+        audioContext
+      );
     });
   });
 };
@@ -61,7 +82,7 @@ const timeToHuman = (milliseconds) => {
 };
 
 let fadeInterval;
-const fadeOut = (soundButtons, soundToVolumeMap) => {
+const fadeOut = (soundButtons, soundToVolumeMap, audioContext) => {
   clearInterval(fadeInterval);
 
   let inc = 1;
@@ -79,7 +100,8 @@ const fadeOut = (soundButtons, soundToVolumeMap) => {
       triggerSoundChange(
         button,
         baseVolumeMap[button.dataset.sound] * inc * 100,
-        soundToVolumeMap
+        soundToVolumeMap,
+        audioContext
       );
     });
 
@@ -92,7 +114,8 @@ const createTimerFor = (
   value,
   soundButtons,
   countdownText,
-  soundToVolumeMap
+  soundToVolumeMap,
+  audioContext
 ) => {
   const [hh, mm] = value.split(":");
   const targetDate = new Date();
@@ -111,7 +134,7 @@ const createTimerFor = (
 
     if (timeUntil < 0) {
       clearTimer(countdownTimer, countdownText);
-      fadeOut(soundButtons, soundToVolumeMap);
+      fadeOut(soundButtons, soundToVolumeMap, audioContext);
     }
   }, 1000);
 };
@@ -126,7 +149,8 @@ const detectCountdown = (
   soundButtons,
   countdownTimer,
   countdownText,
-  soundToVolumeMap
+  soundToVolumeMap,
+  audioContext
 ) => {
   countdownTimer.addEventListener("change", () => {
     clearInterval(timerInterval);
@@ -136,7 +160,8 @@ const detectCountdown = (
         countdownTimer.value,
         soundButtons,
         countdownText,
-        soundToVolumeMap
+        soundToVolumeMap,
+        audioContext
       );
   });
 
@@ -145,17 +170,29 @@ const detectCountdown = (
   });
 };
 
-const initialiseMixer = (soundButtons, soundToVolumeMap) => {
+const initialiseMixer = (soundButtons, soundToVolumeMap, audioContext) => {
   soundButtons.forEach((button) => {
-    triggerSoundChange(button, getButtonRange(button).value, soundToVolumeMap);
+    triggerSoundChange(
+      button,
+      getButtonRange(button).value,
+      soundToVolumeMap,
+      audioContext
+    );
   });
 };
 
 const soundButtons = document.querySelectorAll(".sound");
 const countdownTimer = document.querySelector('.countdown input[type="time"]');
 const countdownText = document.querySelector(".countdown span");
-const soundToVolumeMap = generateSoundToVolumeMap(soundButtons);
+const audioContext = new AudioContext();
+const soundToVolumeMap = generateSoundToVolumeMap(audioContext, soundButtons);
 
-addSoundButtonListeners(soundButtons, soundToVolumeMap);
-detectCountdown(soundButtons, countdownTimer, countdownText, soundToVolumeMap);
-initialiseMixer(soundButtons, soundToVolumeMap);
+addSoundButtonListeners(soundButtons, soundToVolumeMap, audioContext);
+detectCountdown(
+  soundButtons,
+  countdownTimer,
+  countdownText,
+  soundToVolumeMap,
+  audioContext
+);
+initialiseMixer(soundButtons, soundToVolumeMap, audioContext);
