@@ -145,8 +145,8 @@
   <meta name="description" content="{comic.title} | {comic.hoverText}" />
   <meta name="keywords" content={comicKeywords(comic)} />
   <meta property="og:title" content={comic.title} />
-  <link rel="canonical" href={canonicalComicUrl} />
-  <meta property="og:url" content={canonicalComicUrl} />
+  <link rel="canonical" href={canonicalComicUrl(comic)} />
+  <meta property="og:url" content={canonicalComicUrl(comic)} />
   <meta property="og:image" content={absoluteComicSrc(comic.preview)} />
   <meta name="twitter:image" content={absoluteComicSrc(comic.preview)} />
   <meta name="twitter:card" content="summary_large_image" />
@@ -154,8 +154,6 @@
   <meta name="twitter:creator" content="@StephenCookDev" />
   <meta name="twitter:title" content={comic.title} />
   <meta name="twitter:description" content={comic.hoverText} />
-
-  <link rel="canonical" href={canonicalComicUrl(comic)} />
 </svelte:head>
 
 <CondensedHeader />
