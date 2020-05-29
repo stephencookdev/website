@@ -6,6 +6,7 @@
   export let subtitle;
   export let headerImage;
   export let headerAlt;
+  export let ogImage;
   export let keywords;
   export let published;
 
@@ -41,6 +42,11 @@
       margin-top: 0.3rem;
     }
   }
+
+  :global(.twitter-tweet) {
+    box-sizing: border-box;
+    margin: 3rem auto !important;
+  }
 </style>
 
 <svelte:head>
@@ -51,9 +57,9 @@
   <meta property="og:title" content={title} />
   <link rel="canonical" href={canonicalBlogUrl} />
   <meta property="og:url" content={canonicalBlogUrl} />
-  <meta property="og:image" content={makeAbsolute(headerImage)} />
+  <meta property="og:image" content={makeAbsolute(ogImage || headerImage)} />
   <meta property="og:description" content={subtitle} />
-  <meta name="twitter:image" content={makeAbsolute(headerImage)} />
+  <meta name="twitter:image" content={makeAbsolute(ogImage || headerImage)} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@StephenCookDev" />
   <meta name="twitter:creator" content="@StephenCookDev" />
@@ -66,7 +72,9 @@
   <small>{subtitle}</small>
 </h2>
 
-<img src={headerImage} alt={headerAlt} />
+{#if headerImage}
+  <img src={headerImage} alt={headerAlt} />
+{/if}
 
 <span class="published">
   Posted on
@@ -79,7 +87,4 @@
     data-show-count="true">
     Follow
   </a>
-  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8">
-
-  </script>
 </span>
