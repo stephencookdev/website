@@ -45,6 +45,13 @@
   }
 </style>
 
+<svelte:head>
+  <title>Blog | Stephen Cook Dev</title>
+  <meta
+    name="description"
+    content={'Blog posts of a software engineer at Thread. Saving up to fulfil true dream of professional Mario Kart'} />
+</svelte:head>
+
 {#each posts as post}
   {#if DEV_MODE || post.live}
     <div class={'post' + (!post.live ? ' dev-post' : '')}>

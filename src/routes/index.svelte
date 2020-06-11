@@ -41,6 +41,9 @@
 
 <svelte:head>
   <title>Stephen Cook Dev</title>
+  <meta
+    name="description"
+    content={'Software engineer at Thread. Saving up to fulfil true dream of professional Mario Kart'} />
 </svelte:head>
 
 <header class="grand">
