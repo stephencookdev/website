@@ -6,8 +6,8 @@ const comics = [
     slug: "need-for-zoom-speed",
     title: "Need for (Zoom) Speed",
     hoverText:
-      "a race made all the more tense by most people not realising it's a race",
-    keywords: "quarantine, remote",
+      "just because no one else realises this is a game doesn't mean I'm not winning",
+    keywords: "remote, zoom, racing",
   },
   {
     published: "2020-05-29",
