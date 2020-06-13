@@ -219,6 +219,10 @@ main ul li:after {
   pointer-events: none;
 }
 
+main > img {
+  border-radius: 3px;
+}
+
 main > img,
 main > iframe {
   display: block;
