@@ -15,47 +15,33 @@
 </BlogMeta>
 
 <p>
-  You’ve been swayed by shiny appeal of the Jamstack, and have decided to move
-  over to Netlify to host your statically generated site.
+  You enter the realm of Jamstack and approach the Netlify Council. They spot
+  the MongoDB requirement in your app, and a long and painful silence stretches
+  out.
 </p>
 
+<p>Will they allow this afront to Jamstack?</p>
+
 <p>
-  But alas, your site isn’t
-  <i>quite</i>
-  statically generated, and has that
-  <i>one</i>
-  dependency on a MongoDB database.
+  Fortunately, Netlify isn’t a one-trick pony, and it does allow integration
+  with a database, like MongoDB.
 </p>
 
-<p>
-  Fortunately, Netlify isn’t a one-trick pony, and in this post we’ll look at
-  how to get MongoDB integrated in with our Netlify site.
-</p>
-
-<h2>Warning</h2>
+<h2>FaunaDB Warning</h2>
 
 <p>
-  Please think strongly about whether or not Netlify is the correct solution for
-  you. If your site has a lot of deeply ingrained dependencies on your database,
-  then your site probably doesn’t fit the Jamstack model, and Netlify probably
-  isn’t right for you.
-</p>
-
-<p>
-  If you’re creating a database from scratch, not moving across an existing
-  database, then
-  <i>seriously consider</i>
-  using
+  Quick PSA: if you’re creating a database from scratch, not moving across an
+  existing database, then you should seriously consider using
   <a href="https://docs.fauna.com/fauna/current/integrations/netlify.html">
     FaunaDB
   </a>
-  instead. Since Netlify doesn’t have first-party support for MongoDB, what we
-  have to do in this guide is less secure.
+  instead. Netlify doesn’t have first-party support for MongoDB, so what we have
+  to do in this guide is less secure.
 </p>
 
 <p>
-  But if you’re sure Netlify with MongoDB is the right call, then let’s look at
-  getting a bit of MongoDB in there!
+  Also — don’t take drugs, and stay in school. Now back to our regularly
+  scheduled programming.
 </p>
 
 <h2>Getting Started with Netlify</h2>
@@ -67,7 +53,7 @@
     href="https://www.netlify.com/blog/2016/09/29/a-step-by-step-guide-deploying-on-netlify/">
     following this guide
   </a>
-  and coming back here once you have a basic site being built and deployed.
+  and coming back here once you have a site being built and deployed.
 </p>
 
 <h2>Netlify Functions</h2>
@@ -80,11 +66,11 @@
 </p>
 
 <p>
-  So let’s first of all add a
+  First, let’s add a
   <code>functions</code>
   field to our
   <code>netlify.toml</code>
-  (or, first
+  (or
   <a href="https://docs.netlify.com/configure-builds/file-based-configuration/">
     create a
     <code>netlify.toml</code>
@@ -100,8 +86,8 @@
   functions = "lambda_functions"`} />
 
 <p>
-  Great! Now let’s create a really simple Lambda function, just to see what’s
-  what. Create a new file called
+  Great! Now let’s create a Lambda function, to see what’s what. Create a new
+  file called
   <code>what_is_the_time.js</code>
   in that folder:
 </p>
@@ -123,7 +109,7 @@ module.exports.handler = async (event, context) => {
 };`} />
 
 <p>
-  Now, if we deploy this we should be able to call this function by making a
+  Now, if we deploy this, we should be able to call this function by making a
   <code>GET</code>
   request to
   <b>/.netlify/functions/what_is_the_time</b>
@@ -171,8 +157,8 @@ module.exports.handler = async (event, context) => {
   So let’s create a new Lambda function to access our database. I’m going to
   call mine
   <code>pokemon.js</code>
-  since my database holds a collection of my favourite Pokémon. It’s a very
-  important database, and one that I desperately need access to through the web.
+  since my database holds a collection of my favourite Pokémon. It’s a crucial
+  database and one that I desperately need access to through the web.
 </p>
 
 <Code
@@ -226,7 +212,7 @@ module.exports.handler = async (event, context) => {
 <p>
   Note that we reference a
   <code>process.env.MONGODB_URI</code>
-  at the start. We can’t inline this URI in the code, since it will include our
+  at the start. We can’t inline this URI in the code since it will include our
   DB credentials.
 </p>
 
@@ -260,7 +246,7 @@ module.exports.handler = async (event, context) => {
   request to
   <b>/.netlify/functions/pokemon</b>
   still doesn’t work. Unfortunately, MongoDB comes by default with whitelist
-  protection, meaning that it only allows certain IP ranges to access your
+  protection, meaning that it only allows specific IP ranges to access your
   database.
 </p>
 
@@ -270,14 +256,13 @@ module.exports.handler = async (event, context) => {
 </p>
 
 <p>
-  Normally we would try and give our Lambda function a fixed IP, or create a
+  Usually, we would try and give our Lambda function a fixed IP, or create a
   Network Peering Connection — sadly Netlify doesn’t (at the time of writing
   this) support either of these things.
 </p>
 
 <p>
-  <i>So,</i>
-  instead
+  So instead,
   <a
     href="https://community.netlify.com/t/fetching-mongodb-data-with-lambda-functions/11225/5">
     what Netlify recommend
@@ -287,30 +272,30 @@ module.exports.handler = async (event, context) => {
 
 <p>
   What this means is that
-  <i>anyone,</i>
+  <i>anyone</i>
+  —
   <i>anywhere</i>
   can access your database, if they know your password. So before doing this,
   <i>please</i>
   make sure that your
   <b>password is secure,</b>
-  and that
-  <b>the db user has as few permissions as possible</b>
+  and that he database user has as
+  <b>few permissions as possible</b>
   — I recommend
   <a href="https://docs.atlas.mongodb.com/security-manage-atlas-users/">
     creating a new user
   </a>
-  specfically for this.
+  specifically for this.
 </p>
 
 <p>
-  It’s important to get this right, because you’re risking someone getting root
-  privileges to your database, and all of its data. Now would be a good time to
-  get a colleague or friend to just look over your shoulder!
+  It’s essential to get this right because you’re risking someone getting root
+  privileges to your database and all of its data. Now would be an excellent
+  time to get a colleague or friend to look over your shoulder!
 </p>
 
 <p>
-  Hopefully that’s done enough to impress how dangerous and non-ideal this is —
-  but
+  Hopefully, I’ve done enough to impress the importance and danger of this — but
   <a href="https://docs.atlas.mongodb.com/security-whitelist/">
     making your database open to the internet
   </a>
@@ -322,14 +307,14 @@ module.exports.handler = async (event, context) => {
 <h2>Modify Data in our Database</h2>
 
 <p>
-  So we’ve got basic access to our database now, but what if we want to modify
-  data in it? How do we get data from our Lambda function?
+  So we’ve got access to our database now, but what if we want to modify data in
+  it? How do we get data from our Lambda function?
 </p>
 
 <p>
   Let’s modify our
   <code>pokemon.js</code>
-  Lambda function to also add a Pokémon when receiving a POST.
+  Lambda function to add a Pokémon when receiving a POST.
 </p>
 
 <Code
