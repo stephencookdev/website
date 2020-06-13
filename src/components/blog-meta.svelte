@@ -1,5 +1,6 @@
 <script>
   import HumanDate from "./human-date.svelte";
+  import TwitterFollowButton from "./twitter-follow-button.svelte";
 
   export let slug;
   export let title;
@@ -28,12 +29,8 @@
     flex-wrap: wrap;
   }
   :global(.twitter-follow-button) {
-    display: none;
     margin-left: 0.7rem;
     margin-top: -0.45rem;
-  }
-  :global(.twitter-follow-button-rendered) {
-    display: block;
   }
   @media (max-width: 800px) {
     :global(.twitter-follow-button) {
@@ -80,11 +77,5 @@
   Posted on
   <HumanDate date={published} />
   by Stephen Cook
-  <a
-    href="https://twitter.com/stephencookdev?ref_src=twsrc%5Etfw"
-    class="twitter-follow-button"
-    data-show-screen-name="false"
-    data-show-count="true">
-    Follow
-  </a>
+  <TwitterFollowButton className="twitter-follow-button" />
 </span>
