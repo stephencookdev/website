@@ -5,12 +5,12 @@
 
 <BlogMeta
   slug="netlify-mongodb"
-  title="DRAFT Using MongoDB with Netlify"
-  subtitle={'DRAFT Some More DB With My Jam, Please'}
+  title="Jamming with MongoDB and Netlify"
+  subtitle={'Netlify can support a MongoDB database — a tale in having your cake and eating it too'}
   headerImage="/blog/netlify-mongodb/handshake.jpg"
   headerAlt={'two people shaking hands, photoshopped to have their heads replaced by the Netlify and MongoDB logos'}
   keywords="netlify,mongodb,database,jam"
-  published="2020-06-03">
+  published="2020-06-15">
   false
 </BlogMeta>
 
