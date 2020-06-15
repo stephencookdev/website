@@ -11,7 +11,7 @@
   headerAlt={'two people shaking hands, photoshopped to have their heads replaced by the Netlify and MongoDB logos'}
   keywords="netlify,mongodb,database,jam"
   published="2020-06-15">
-  false
+  true
 </BlogMeta>
 
 <p>
@@ -119,7 +119,7 @@ module.exports.handler = async (event, context) => {
 <img
   src="./blog/netlify-mongodb/what-is-the-time.png"
   alt="Our website showing us the current Unix time, from the server"
-  style="border: 1px solid currentColor; max-width: 800px" />
+  style="border: 1px solid currentColor; width: 800px" />
 
 <p>Huzzah!</p>
 
@@ -243,7 +243,7 @@ module.exports.handler = async (event, context) => {
 <img
   src="./blog/netlify-mongodb/add-netlify-build-var.png"
   alt="Adding MongoDB URI environment variable"
-  style="border: 1px solid currentColor; max-width: 800px" />
+  style="border: 1px solid currentColor; width: 800px" />
 
 <h2>Whitelisting (Here Be Dragons)</h2>
 
@@ -390,7 +390,7 @@ console.log("GET request new result", newListJson);`} />
 <img
   src="./blog/netlify-mongodb/add-pikachu.png"
   alt="Making a POST request to add Pikachu to our DB"
-  style="border: 1px solid currentColor; max-width: 500px" />
+  style="border: 1px solid currentColor; width: 500px" />
 
 <p>Huzzah!</p>
 
