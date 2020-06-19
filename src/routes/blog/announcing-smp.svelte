@@ -10,7 +10,7 @@
   ogImage="/blog/announcing-smp/smp-logo.png"
   keywords="webpack,speed,tools,javascript"
   published="2018-02-26">
-  false
+  true
 </BlogMeta>
 
 <p>
