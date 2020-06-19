@@ -2,6 +2,13 @@ const Jimp = require("jimp");
 
 const comics = [
   {
+    published: "2020-06-19",
+    slug: "that-will-teach-them",
+    title: "That’ll Teach ’Em",
+    hoverText: "my only regret is not being more passive-aggressive",
+    keywords: "quarantine, passive-aggressive",
+  },
+  {
     published: "2020-06-12",
     slug: "need-for-zoom-speed",
     title: "Need for (Zoom) Speed",
