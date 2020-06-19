@@ -119,7 +119,8 @@ module.exports.handler = async (event, context) => {
 <img
   src="./blog/netlify-mongodb/what-is-the-time.png"
   alt="Our website showing us the current Unix time, from the server"
-  style="border: 1px solid currentColor; width: 800px" />
+  width="800"
+  class="framed" />
 
 <p>Huzzah!</p>
 
@@ -243,7 +244,8 @@ module.exports.handler = async (event, context) => {
 <img
   src="./blog/netlify-mongodb/add-netlify-build-var.png"
   alt="Adding MongoDB URI environment variable"
-  style="border: 1px solid currentColor; width: 800px" />
+  width="800"
+  class="framed" />
 
 <h2>Whitelisting (Here Be Dragons)</h2>
 
@@ -390,7 +392,8 @@ console.log("GET request new result", newListJson);`} />
 <img
   src="./blog/netlify-mongodb/add-pikachu.png"
   alt="Making a POST request to add Pikachu to our DB"
-  style="border: 1px solid currentColor; width: 500px" />
+  width="500"
+  class="framed" />
 
 <p>Huzzah!</p>
 
