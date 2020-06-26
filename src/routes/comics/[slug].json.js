@@ -2,6 +2,13 @@ const Jimp = require("jimp");
 
 const comics = [
   {
+    published: "2020-06-26",
+    slug: "social-distancing",
+    title: "Social Distancing",
+    hoverText: "I really only trained for the down part of lockdown",
+    keywords: "quarantine, lonely, friends",
+  },
+  {
     published: "2020-06-19",
     slug: "that-will-teach-them",
     title: "That’ll Teach ’Em",
