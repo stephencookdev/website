@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev",
-    "build": "sapper export --entry \"/ /blog/preview /404\"",
+    "build": "sapper export --entry \"/ /blog/preview /404\" && ./build-slides.sh",
     "build-prod": "NODE_ENV=production npm run build",
     "deploy-invalidate-cloudfront": "travis-ci-cloudfront-invalidation -a $AWS_ACCESS_ID -s $AWS_SECRET_ID -c $CLOUDFRONT_ID -i '/*' -b $TRAVIS_BRANCH -p $TRAVIS_PULL_REQUEST"
   },
@@ -22,6 +22,7 @@
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-node-resolve": "^7.0.0",
     "@rollup/plugin-replace": "^2.2.0",
+    "@stephencookdev/mario-kart-css-talk": "^1.1.0",
     "glob": "^7.1.6",
     "jimp": "^0.12.1",
     "parse5": "^6.0.0",

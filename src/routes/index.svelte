@@ -245,9 +245,7 @@
     </p>
     <p class="talks-seperated">
       <a href="https://vimeo.com/364369506">video</a>
-      <a href="https://stephencookdev.co.uk/slides/mario-kart-css-talk">
-        slides
-      </a>
+      <a href="/slides/mario-kart-css-talk">slides</a>
       <a href="https://github.com/stephencookdev/mario-kart-css-talk">
         slides source
       </a>
@@ -286,7 +284,7 @@
     </p>
     <p class="talks-seperated">
       <a href="https://youtu.be/XVq86QKFcFI">video</a>
-      <a href="https://stephencookdev.co.uk/slides/react-router-talk">slides</a>
+      <a href="/slides/react-router-talk">slides</a>
       <a href="https://github.com/stephencookdev/react-router-talk">
         slides source
       </a>
