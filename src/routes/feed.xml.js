@@ -14,11 +14,12 @@ const renderItems = (items) =>
     <![CDATA[ ${item.description} ]]>
   </description>
   <link>${BASE_URL}${item.relativeLink}</link>
+  <guid>${BASE_URL}${item.relativeLink}</guid>
   ${item.keywords
     .split(",")
     .map((keyword) => `<category><![CDATA[ ${keyword} ]]></category>`)
     .join("")}
-  <pubDate>${new Date(item.published).toString()}</pubDate>
+  <pubDate>${new Date(item.published).toUTCString()}</pubDate>
 </item>
 `
     )
@@ -35,7 +36,8 @@ const render = () => `
       <![CDATA[ Software engineer at Thread. Saving up to fulfil true dream of professional Mario Kart ]]>
     </description>
     <link>${BASE_URL}</link>
-    <lastBuildDate>${new Date().toString()}</lastBuildDate>
+    <atom:link href="${BASE_URL}/feed.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     ${renderItems(
       getPosts()
         .filter((post) => post.live)
