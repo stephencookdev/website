@@ -1,10 +1,11 @@
 <script context="module">
-  // Complete hack! 😔 Sapper has _no way_ for a dynamic sitemap.xml to be picked
-  // up in the `sapper export` without a direct link to it.
+  // Complete hack! 😔 Sapper has _no way_ for a dynamic e.g. sitemap.xml to be
+  // picked up in the `sapper export` without a direct link to it.
   // So, we force this index to "request" it in SSR-mode, to force Sapper to
   // build it.
+  const hackPreloads = ["sitemap.xml", "feed.xml"];
   export function preload({ params, query }) {
-    return this.fetch("sitemap.xml");
+    return Promise.all(hackPreloads.map(item => this.fetch(item)));
   }
 </script>
 
