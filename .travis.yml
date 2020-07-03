@@ -4,6 +4,10 @@ node_js:
 script:
   - mkdir -p __sapper__/export
   - npm run build-prod
+install:
+  - npm config set registry https://npm.pkg.github.com/stephencookdev
+  - echo "//npm.pkg.github.com/:_authToken=$GITHUB_TOKEN" > ~/.npmrc
+  - npm install
 deploy:
   provider: s3
   access_key_id: $AWS_ACCESS_ID
