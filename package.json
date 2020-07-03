@@ -22,7 +22,7 @@
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-node-resolve": "^7.0.0",
     "@rollup/plugin-replace": "^2.2.0",
-    "@stephencookdev/mario-kart-css-talk": "^1.1.0",
+    "@stephencookdev/mario-kart-css-talk": "^1.2.0",
     "glob": "^7.1.6",
     "jimp": "^0.12.1",
     "parse5": "^6.0.0",
