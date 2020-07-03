@@ -60,7 +60,7 @@
   </li>
   <li>
     <a href="https://github.com/webpack/docs/wiki/build-performance">
-      Rowan Oulton
+      build performance
     </a>
     (on the webpack wiki)
   </li>
@@ -167,8 +167,8 @@
   Most webpack configs have a rule to handle images, and that rule is normally
   <code>file-loader</code>
   followed by
-  <code>image-webpack-loade</code>
-  r, or some other similar image loader.
+  <code>image-webpack-loader</code>
+  , or some other similar image loader.
 </p>
 
 <p>
