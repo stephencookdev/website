@@ -3,8 +3,6 @@ import { getAllDirect as getComics } from "./comics/[slug].json";
 
 const BASE_URL = "https://stephencook.dev";
 
-//<url><loc>${BASE_URL}/</loc></url>
-
 const renderUrls = (urls) =>
   urls.map((url) => `<url><loc>${BASE_URL}${url}</loc></url>`).join("");
 
