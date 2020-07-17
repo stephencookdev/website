@@ -2,6 +2,13 @@ const Jimp = require("jimp");
 
 const comics = [
   {
+    published: "2020-07-17",
+    slug: "rubber-ducking",
+    title: "Rubber Ducking",
+    hoverText: "ah, yes — the elusive rubber duck technique",
+    keywords: "dev, debugging, rubber-duck",
+  },
+  {
     published: "2020-06-26",
     slug: "social-distancing",
     title: "Social Distancing",
