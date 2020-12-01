@@ -2,6 +2,14 @@ const Jimp = require("jimp");
 
 const comics = [
   {
+    published: "2020-12-01",
+    slug: "counting-down-the-days",
+    title: "Home stretch",
+    hoverText:
+      "dealing with 2020, one advent calendar window of chocolate at a time",
+    keywords: "quarantine, lonely, christmas",
+  },
+  {
     published: "2020-11-29",
     slug: "how-i-die",
     title: "DIY Did I Think This Was a Good Idea?",
