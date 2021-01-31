@@ -33,7 +33,7 @@ const render = () => `
       <![CDATA[ Stephen Cook Dev | RSS Feed ]]>
     </title>
     <description>
-      <![CDATA[ Software engineer at Thread. Saving up to fulfil true dream of professional Mario Kart ]]>
+      <![CDATA[ Software engineer at Let’s Do This. Saving up to fulfil true dream of professional Mario Kart ]]>
     </description>
     <link>${BASE_URL}</link>
     <atom:link href="${BASE_URL}/feed.xml" rel="self" type="application/rss+xml" />

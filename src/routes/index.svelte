@@ -5,46 +5,16 @@
   // build it.
   const hackPreloads = ["sitemap.xml", "feed.xml"];
   export function preload({ params, query }) {
-    return Promise.all(hackPreloads.map(item => this.fetch(item)));
+    return Promise.all(hackPreloads.map((item) => this.fetch(item)));
   }
 </script>
-
-<style>
-  header nav {
-    margin-top: 10vh;
-  }
-  @media (max-width: 600px) {
-    header nav {
-      margin-top: 20vh;
-    }
-  }
-
-  section .talks-seperated {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  section .talks-seperated a:not(:last-of-type) {
-    position: relative;
-    margin-right: 1em;
-  }
-  section .talks-seperated a:not(:last-of-type):after {
-    position: absolute;
-    top: 50%;
-    right: calc(-0.5em - 1px);
-    display: block;
-    width: 2px;
-    height: 2px;
-    background: #999;
-    content: "";
-    pointer-events: none;
-  }
-</style>
 
 <svelte:head>
   <title>Stephen Cook Dev</title>
   <meta
     name="description"
-    content={'Software engineer at Thread. Saving up to fulfil true dream of professional Mario Kart'} />
+    content={"Software engineer at Let’s Do This. Saving up to fulfil true dream of professional Mario Kart"}
+  />
 </svelte:head>
 
 <header class="grand">
@@ -63,7 +33,8 @@
         fill="none"
         stroke="currentColor"
         stroke-width="2"
-        stroke-linecap="round">
+        stroke-linecap="round"
+      >
         <circle cx="12" cy="12" r="10" />
         <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
         <line x1="12" y1="17" x2="12" y2="17" />
@@ -80,7 +51,8 @@
         stroke="currentColor"
         stroke-width="2"
         stroke-linecap="round"
-        stroke-linejoin="round">
+        stroke-linejoin="round"
+      >
         <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
         <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8" />
       </svg>
@@ -91,13 +63,15 @@
         xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
-        viewBox="0 0 6.35 6.35">
+        viewBox="0 0 6.35 6.35"
+      >
         <defs />
         <g
           fill="none"
           stroke="currentColor"
           stroke-width=".4"
-          style="transform: scale(1.1) translateX(-8%)">
+          style="transform: scale(1.1) translateX(-8%)"
+        >
           <path
             d="M1.32
             5.6c.43.54.68-.38.93-.3.12.04.2.52.46.26.38-.38.4-.59.99-.71.07-.02.15-.05.22-.03.1.03
@@ -105,15 +79,18 @@
             0-.08-.26-.12-.28-.38-.15-.87.26-.61.66.04.07.13.1.2.13.5.17.5-.56.48-.56-.02
             0 .05.46.3.46.58 0 .42-1.52.41-1.52-.12 0 .04.23.05.35.16
             1.57-.07-.37.05.76l.03.15v.18c.03.4-.02-.43
-            0-.46.06-.12.53-.42.68-.15.3.52-.35.52-.63.61" />
+            0-.46.06-.12.53-.42.68-.15.3.52-.35.52-.63.61"
+          />
           <path d="M.68 5.51s1.14-2.55 2.05-3.26c.91-.7 2.23-1.21 2.23-1.21" />
           <path
             d="M1.04
             4.68s.07-1.82.2-2.18c.13-.35.6-.98.6-.98l.1.53s.44-1.01.72-1.22C2.93.63
-            4.05.48 4.2.48l1.34.05" />
+            4.05.48 4.2.48l1.34.05"
+          />
           <path
             d="M1.04 4.68s.6-.13.93-.36c.33-.22 1.8-1.2 2.2-1.69.4-.48 1.37-2.1
-            1.37-2.1" />
+            1.37-2.1"
+          />
         </g>
       </svg>
     </a>
@@ -127,7 +104,8 @@
         fill="none"
         stroke="currentColor"
         stroke-width=".25"
-        stroke-linecap="round">
+        stroke-linecap="round"
+      >
         <path
           stroke-width=".5"
           d="M1.4559.8301C1.911.7791 2.3847.6625 2.8564.599c1.1499-.155
@@ -137,19 +115,22 @@
           0-.401.0386-.5952 0-.4947-.0983-.9037-.5763-1.0154-1.0212C.4057
           3.8662.477 2.778.7205
           2.091c.0886-.2505.1942-.506.3502-.7294.0315-.0447.1166-.1568.175-.1982.0296-.021.079-.0085.1051-.033.0165-.0157-.0165-.0505
-          0-.0661.0039-.0037.1367-.033.035-.033" />
+          0-.0661.0039-.0037.1367-.033.035-.033"
+        />
         <path
           d="M3.2039 2.4555c.0308-.0889-.035-.2167
           0-.304.0476-.119.2503-.2126.3508-.2572.6949-.3089.7245.8424.4443
           1.216-.1842.2456-.5014.2566-.6314-.0467-.088-.2052-.082-.4037-.1637-.608zM4.42
           4.1393c-.2735-.1367-.8055.0328-1.1226-.0467-.2616.4781.5328.6495.8186.421.1214-.0972.2095-.2483.304-.3743zM4.5369
-          2.5257c-.0039-.1682.0536-.4934.2572-.5613.466-.1553.4498.68.3742.9822-.031.1239-.1736.2672-.2572.3508-.3307.3308-.568-.4486-.3742-.7717z" />
+          2.5257c-.0039-.1682.0536-.4934.2572-.5613.466-.1553.4498.68.3742.9822-.031.1239-.1736.2672-.2572.3508-.3307.3308-.568-.4486-.3742-.7717z"
+        />
         <path
           fill="currentColor"
           d="M3.7184
           2.6894c-.01-.9235.4647-.111.2806.2572-.0976.1953-.3995-.0195-.2806-.2572zM4.876
           2.6894c.1532-.5518.2756.0568.152.304-.0149.0298-.1386.0635-.152.0234-.0348-.1043.046-.2353
-          0-.3274z" />
+          0-.3274z"
+        />
       </svg>
     </a>
 
@@ -158,7 +139,8 @@
         xmlns="http://www.w3.org/2000/svg"
         width="1024"
         height="1024"
-        viewBox="0 0 1024 1024">
+        viewBox="0 0 1024 1024"
+      >
         <path
           fill="currentColor"
           d="M512 0C229.25 0 0 229.25 0 512c0 226.25 146.688 418.125 350.156
@@ -175,7 +157,8 @@
           81.469 52.625 137.406 0 196.688-119.75 240-233.812 252.688 18.438
           15.875 34.75 47 34.75 94.75 0 68.438-0.688 123.625-0.688 140.5 0
           13.625 9.312 29.562 35.25 24.562C877.438 930 1024 738.125 1024 512
-          1024 229.25 794.75 0 512 0z" />
+          1024 229.25 794.75 0 512 0z"
+        />
       </svg>
     </a>
   </nav>
@@ -199,14 +182,16 @@
     <h2>Where Do I Work?</h2>
     <p>
       I currently work
-      <a href="https://thread.com/">at Thread</a>
-      as a front-end engineer.
+      <a href="https://letsdothis.com/">at Let’s Do This</a>
+      as a senior engineer.
     </p>
     <p>
-      Thread is trying to make it easy to find clothes online, using fancy
-      machine learning and in-house stylists to show you only clothes you’ll
-      like. It is a pretty cool company,
-      <a href="https://thread.com/jobs">if you were looking&hellip;</a>
+      Let’s Do This is a digital marketplace for sporting and mass participation
+      events, inspiring users to take part in races, from local 5k Runs to
+      Double Ironman Triathlons It is a pretty cool company,
+      <a href="https://angel.co/company/lets-do-this/jobs"
+        >if you were looking&hellip;</a
+      >
     </p>
 
     <h2>Find Me</h2>
@@ -345,3 +330,34 @@
     </p>
   </div>
 </section>
+
+<style>
+  header nav {
+    margin-top: 10vh;
+  }
+  @media (max-width: 600px) {
+    header nav {
+      margin-top: 20vh;
+    }
+  }
+
+  section .talks-seperated {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  section .talks-seperated a:not(:last-of-type) {
+    position: relative;
+    margin-right: 1em;
+  }
+  section .talks-seperated a:not(:last-of-type):after {
+    position: absolute;
+    top: 50%;
+    right: calc(-0.5em - 1px);
+    display: block;
+    width: 2px;
+    height: 2px;
+    background: #999;
+    content: "";
+    pointer-events: none;
+  }
+</style>
