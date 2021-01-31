@@ -300,6 +300,19 @@
       your builds.
     </p>
 
+    <h2>Tmux Workspace Groupings</h2>
+    <p>
+      <a href="https://github.com/stephencookdev/tmux-workspace-groupings/">
+        Tmux Workspace Groupings
+      </a>
+      is a tmux plugin I made to make it easy to create “groupings” of windows between
+      sessions, for projects in your workspace.
+    </p>
+    <p>
+      If you use tmux, and use different sessions to separate e.g. “build” work
+      from “version control” work, then check it out.
+    </p>
+
     <h2>React Static Render Plugin</h2>
     <p>
       <a href="https://github.com/thread/react-static-render-plugin/">
