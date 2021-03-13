@@ -8,9 +8,12 @@
 
   onMount(() => {
     if (typeof IntersectionObserver !== "undefined") {
-      const observer = new IntersectionObserver((entries) => {
-        hasIntersected = entries[0].isIntersecting;
-      });
+      const observer = new IntersectionObserver(
+        (entries) => {
+          hasIntersected = hasIntersected || entries[0].isIntersecting;
+        },
+        { rootMargin: "100px" }
+      );
 
       observer.observe(container);
       return () => observer.unobserve(container);
