@@ -2,6 +2,13 @@ const Jimp = require("jimp");
 
 const comics = [
   {
+    published: "2021-03-13",
+    slug: "sad-songs",
+    title: "Sad Songs",
+    hoverText: "it was a real sad picture of the rain, though",
+    keywords: "quarantine, lonely, christmas",
+  },
+  {
     published: "2020-12-01",
     slug: "counting-down-the-days",
     title: "Home stretch",
