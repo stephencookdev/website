@@ -10,7 +10,8 @@
   headerImage="/blog/in-defence-of-arbitrary/header.jpg"
   headerAlt="A person writing a list of goals"
   keywords="goals,resolutions"
-  published="2020-01-07">
+  published="2020-01-07"
+>
   true
 </BlogMeta>
 
@@ -62,7 +63,8 @@
 <img
   src="./blog/in-defence-of-arbitrary/day-is-arbitrary.gif"
   alt="River saying “Day is a vestigial mode of time measurement based on solar
-  cycles. It's not applicable. I didn't get you anything.”" />
+  cycles. It's not applicable. I didn't get you anything.”"
+/>
 
 <p>
   While shaking someone’s hand is arbitrary, it still serves a useful function.
@@ -93,7 +95,8 @@
   There is a lot of evidence showing that humans are much more effective at
   achieving their goals when
   <a
-    href="https://erationality.media.mit.edu/papers/dan/eRational/Dynamic%20preferences/deadlines.pdf">
+    href="https://erationality.media.mit.edu/papers/dan/eRational/Dynamic%20preferences/deadlines.pdf"
+  >
     those goals have clear time-bounds,
   </a>
   and when they

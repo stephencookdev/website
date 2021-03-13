@@ -9,7 +9,8 @@
   subtitle="Measure the Speed of Your webpack Loaders and Plugins"
   ogImage="/blog/announcing-smp/smp-logo.png"
   keywords="webpack,speed,tools,javascript"
-  published="2018-02-26">
+  published="2018-02-26"
+>
   true
 </BlogMeta>
 
@@ -32,15 +33,16 @@
 
 <p>
   Just changing your webpack config from
-  <code>{'{ plugins: [new XPlugin()] }'}</code>
+  <code>{"{ plugins: [new XPlugin()] }"}</code>
   to
-  <code>{'smp.wrap({ plugins: [new XPlugin()] })'}</code>
+  <code>{"smp.wrap({ plugins: [new XPlugin()] })"}</code>
   — gives you console output like this:
 </p>
 
 <img
   src="./blog/announcing-smp/smp-output.png"
-  alt="Preview of console output from SMP" />
+  alt="Preview of console output from SMP"
+/>
 
 <p>
   Knowing which plugins and loaders are causing lag is half the battle — the
@@ -86,7 +88,8 @@ module.exports = {
     new ForceCaseSensitivityPlugin(),
     new ManifestPlugin()
   ]
-};`} />
+};`}
+/>
 
 <p>
   As it stands, webpack will tell us that our build takes however long overall.
@@ -96,8 +99,8 @@ module.exports = {
 
 <p>
   So let’s first add
-  <code>SpeedMeasurePlugin</code>
-  . To do this, we need to change our webpack config to something like this:
+  <code>SpeedMeasurePlugin</code>. To do this, we need to change our webpack
+  config to something like this:
 </p>
 
 <Code
@@ -130,13 +133,15 @@ module.exports = smp.wrap({
     new ForceCaseSensitivityPlugin(),
     new ManifestPlugin()
   ]
-});`} />
+});`}
+/>
 
 <p>
   And that’s it! By default, SMP will now start printing timing output to your
   console (you can also
   <a
-    href="https://github.com/stephencookdev/speed-measure-webpack-plugin#optionsdisable">
+    href="https://github.com/stephencookdev/speed-measure-webpack-plugin#optionsdisable"
+  >
     disable SMP entirely
   </a>
   with a flag).
@@ -150,16 +155,17 @@ module.exports = smp.wrap({
 <Code
   code={`
 ForceCaseSensitivityPlugin took 4.21 secs
-ManifestPlugin took 0.11 secs`} />
+ManifestPlugin took 0.11 secs`}
+/>
 
 <p>
   So immediately we see that the
   <a href="https://github.com/dcousineau/force-case-sensitivity-webpack-plugin">
     force-case-sensitivity-webpack-plugin
   </a>
-  is taking an inordinately large amount of time for what it’s doing (just
-  comparing case-sensitivity of require statements). And indeed, looking at the
-  GitHub page, the author has actually archived the project in favour of
+  is taking an inordinately large amount of time for what it’s doing (just comparing
+  case-sensitivity of require statements). And indeed, looking at the GitHub page,
+  the author has actually archived the project in favour of
   <a href="https://github.com/Urthen/case-sensitive-paths-webpack-plugin">
     case-sensitive-paths-webpack-plugin,
   </a>
@@ -169,7 +175,8 @@ ManifestPlugin took 0.11 secs`} />
 <Code
   code={`
 CaseSensitivePathsPlugin took 0.32 secs
-ManifestPlugin took 0.12 secs`} />
+ManifestPlugin took 0.12 secs`}
+/>
 
 <p>A pretty noticeable improvement!</p>
 
@@ -182,25 +189,23 @@ babel-loader took 21.51 secs
 coffee-loader took 5.52 secs
   module count = 21
 modules with no loaders took 3.13 secs
-  module count = 143`} />
+  module count = 143`}
+/>
 
 <p>
   First of all, what’s
-  <code>modules with no loaders</code>
-  ? Not all modules get piped through webpack through a named loader (e.g. plain
-  ol’ JS files from
-  <code>node_modules</code>
-  ) — the timings of these modules goes under this
+  <code>modules with no loaders</code>? Not all modules get piped through
+  webpack through a named loader (e.g. plain ol’ JS files from
+  <code>node_modules</code>) — the timings of these modules goes under this
   <code>modules with no loaders</code>
   section.
 </p>
 
 <p>
   Second of all, what’s a
-  <code>module</code>
-  ? Each file or fragment that gets loaded into webpack (usually via a loader)
-  is called a “module”. In most cases, you can just think of this as a file that
-  you’re
+  <code>module</code>? Each file or fragment that gets loaded into webpack
+  (usually via a loader) is called a “module”. In most cases, you can just think
+  of this as a file that you’re
   <code>require</code>
   ing somewhere in your code. You can read more about it in the
   <a href="https://webpack.js.org/concepts/modules/">official webpack docs,</a>
@@ -224,7 +229,8 @@ modules with no loaders took 3.13 secs
 babel-loader took 24.41 secs
   module count = 171
 modules with no loaders took 3.13 secs
-  module count = 143`} />
+  module count = 143`}
+/>
 
 <p>Much better!</p>
 
@@ -237,7 +243,8 @@ modules with no loaders took 3.13 secs
   <code>options.outputFormat</code>
   in
   <a
-    href="https://github.com/stephencookdev/speed-measure-webpack-plugin#optionsoutputformat">
+    href="https://github.com/stephencookdev/speed-measure-webpack-plugin#optionsoutputformat"
+  >
     the README.
   </a>
 </p>

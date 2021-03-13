@@ -8,7 +8,7 @@
 
   onMount(() => {
     if (typeof IntersectionObserver !== "undefined") {
-      const observer = new IntersectionObserver(entries => {
+      const observer = new IntersectionObserver((entries) => {
         hasIntersected = entries[0].isIntersecting;
       });
 
@@ -37,7 +37,10 @@
 <div
   bind:this={container}
   class={placeholderClass}
-  style={hasIntersected ? 'position: absolute; opacity: 0; pointer-events: none' : ''} />
+  style={hasIntersected
+    ? "position: absolute; opacity: 0; pointer-events: none"
+    : ""}
+/>
 {#if hasIntersected}
   <slot />
 {/if}

@@ -17,8 +17,32 @@
   export let segment;
   export let posts;
 
-  $: specificPost = posts.find(post => post.slug === segment);
+  $: specificPost = posts.find((post) => post.slug === segment);
 </script>
+
+<CondensedHeader />
+
+<main>
+  <slot />
+
+  {#if specificPost}
+    <EmailListSubscribe />
+
+    <div class="bio">
+      <a href="/" class="bio-title">Stephen Cook Dev</a>
+      <img src="/me.jpg" alt="Stephen Cook" class="me" />
+
+      <p>
+        I’m Stephen. I gave up a promising Mario Kart career in 2014, to instead
+        focus on software engineering full-time.
+      </p>
+      <p>
+        Why not
+        <a href="https://twitter.com/stephencookdev">follow me on Twitter?</a>
+      </p>
+    </div>
+  {/if}
+</main>
 
 <style>
   main :global(h2) {
@@ -94,27 +118,3 @@
     width: fit-content;
   }
 </style>
-
-<CondensedHeader />
-
-<main>
-  <slot />
-
-  {#if specificPost}
-    <EmailListSubscribe />
-
-    <div class="bio">
-      <a href="/" class="bio-title">Stephen Cook Dev</a>
-      <img src="/me.jpg" alt="Stephen Cook" class="me" />
-
-      <p>
-        I’m Stephen. I gave up a promising Mario Kart career in 2014, to instead
-        focus on software engineering full-time.
-      </p>
-      <p>
-        Why not
-        <a href="https://twitter.com/stephencookdev">follow me on Twitter?</a>
-      </p>
-    </div>
-  {/if}
-</main>

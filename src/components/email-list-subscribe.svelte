@@ -1,3 +1,11 @@
+<div class="container">
+  <script
+    async
+    data-uid="2592341ce0"
+    src="https://stephencookdev.ck.page/2592341ce0/index.js">
+  </script>
+</div>
+
 <style>
   .container {
     margin-top: 4rem;
@@ -28,12 +36,3 @@
     border: 0 !important;
   }
 </style>
-
-<div class="container">
-  <script
-    async
-    data-uid="2592341ce0"
-    src="https://stephencookdev.ck.page/2592341ce0/index.js">
-
-  </script>
-</div>

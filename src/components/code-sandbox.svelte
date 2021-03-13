@@ -8,6 +8,20 @@
   const moduleParam = initialFile ? `&module=${initialFile}` : "";
 </script>
 
+<ShowOnScroll placeholderClass="sandbox-iframe sandbox-iframe-placeholder">
+  <iframe
+    src="https://codesandbox.io/embed/{id}?theme=dark{moduleParam}"
+    {title}
+    class="sandbox-iframe"
+    allow="accelerometer; ambient-light-sensor; camera; encrypted-media;
+    geolocation; gyroscope; hid; microphone; midi; payment; usb; vr;
+    xr-spatial-tracking"
+    sandbox="allow-forms allow-modals allow-popups allow-presentation
+    allow-same-origin allow-scripts"
+    loading="lazy"
+  />
+</ShowOnScroll>
+
 <style>
   :global(.sandbox-iframe) {
     width: 100%;
@@ -22,16 +36,3 @@
     background: #222;
   }
 </style>
-
-<ShowOnScroll placeholderClass="sandbox-iframe sandbox-iframe-placeholder">
-  <iframe
-    src="https://codesandbox.io/embed/{id}?theme=dark{moduleParam}"
-    {title}
-    class="sandbox-iframe"
-    allow="accelerometer; ambient-light-sensor; camera; encrypted-media;
-    geolocation; gyroscope; hid; microphone; midi; payment; usb; vr;
-    xr-spatial-tracking"
-    sandbox="allow-forms allow-modals allow-popups allow-presentation
-    allow-same-origin allow-scripts"
-    loading="lazy" />
-</ShowOnScroll>

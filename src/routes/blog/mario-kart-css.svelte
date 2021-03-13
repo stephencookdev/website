@@ -11,17 +11,16 @@
   headerImage="/blog/mario-kart-css/mario-kart-header.png"
   headerAlt="Mario Kart alongside a sample 13 lines of HTML"
   keywords="mario-kart,css,silly"
-  published="2018-04-16">
+  published="2018-04-16"
+>
   true
 </BlogMeta>
 
 <p>
   People say JavaScript is a bad language. No built-in types, a fatiguing
-  ecosystem, and demanding you to constantly explain, “no, no, Java
-  <b>
-    <i>Script</i>
-  </b>
-  ” to anyone even vaguely non-technical.
+  ecosystem, and demanding you to constantly explain, “no, no, Java<b
+    ><i>Script</i></b
+  >” to anyone even vaguely non-technical.
 </p>
 
 <p>
@@ -55,8 +54,8 @@
   <code>box-shadow</code>
   and
   <code>linear-gradient</code>
-  is to specify an arbitrary number of points. This is useful if you wanted two
-  or three gradients, or to create some very basic CSS shapes.
+  is to specify an arbitrary number of points. This is useful if you wanted two or
+  three gradients, or to create some very basic CSS shapes.
 </p>
 
 <p>
@@ -68,7 +67,8 @@
 <p>
   I actually got this idea from reading
   <a
-    href="https://medium.com/@alcidesqueiroz/super-mario-world-in-css-100-css-no-javascript-no-embedded-images-data-uris-no-external-e43dc0c2b1f4">
+    href="https://medium.com/@alcidesqueiroz/super-mario-world-in-css-100-css-no-javascript-no-embedded-images-data-uris-no-external-e43dc0c2b1f4"
+  >
     Alcides Queiroz’ great post
   </a>
   on creating a Pure CSS Super Mario animation.
@@ -78,8 +78,8 @@
   You might argue that this is absurd, has a much larger data cost than even the
   most naive image encoding, without
   <i>even going into</i>
-  the implications of putting image-data into source files. And I might ignore
-  your argument, and continue to speak, but slightly louder.
+  the implications of putting image-data into source files. And I might ignore your
+  argument, and continue to speak, but slightly louder.
 </p>
 
 <p>Doing so allows us to create our racers, like below:</p>
@@ -87,7 +87,8 @@
 <CodeSandbox
   id="7jk054508q"
   title="Mario Kart CSS (Just Mario)"
-  initialFile="mario.css" />
+  initialFile="mario.css"
+/>
 
 <h2>Driving</h2>
 
@@ -98,10 +99,8 @@
 
 <p>
   My initial thought was to have an
-  <code>&lt;input type="text" /&gt;</code>
-  , and have some selectors like
-  <code>[type="text"][value="foo"]</code>
-  .
+  <code>&lt;input type="text" /&gt;</code>, and have some selectors like
+  <code>[type="text"][value="foo"]</code>.
 </p>
 
 <p>
@@ -109,9 +108,8 @@
   <a href="https://stories.algolia.com/a-search-engine-in-css-b5ec4e902e97">
     gave a great talk
   </a>
-  on a Pure CSS search engine (with equally horrifying CSS). He used a very
-  similar idea to drive his dynamic search results. The only drawback to the
-  idea is that
+  on a Pure CSS search engine (with equally horrifying CSS). He used a very similar
+  idea to drive his dynamic search results. The only drawback to the idea is that
   <b>
     <i>it doesn’t actually work.</i>
   </b>
@@ -135,31 +133,22 @@
 <p>
   So I needed something that CSS
   <i>did</i>
-  respond to, with no JavaScript workarounds. After a few hours of searching
-  around, I finally found a pseudoselector that looked to be of use —
-  <code>:valid</code>
-  .
+  respond to, with no JavaScript workarounds. After a few hours of searching around,
+  I finally found a pseudoselector that looked to be of use —
+  <code>:valid</code>.
 </p>
 
 <p>
-  An input
-  <a
-    href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-pattern">
-    with a pattern
-  </a>
-  specified has the corresponding
-  <code>:valid</code>
-  and
-  <code>:invalid</code>
+  An input <a
+    href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-pattern"
+    >with a pattern</a
+  >
+  specified has the corresponding <code>:valid</code> and <code>:invalid</code>
   pseudoselectors. This gives us 2 states to play with. Along with the
   <code>:placeholder-shown</code>
   selector, which tells us if the input is empty, we have 3 total states.
   <b>Empty</b>
-  (middle),
-  <b>valid</b>
-  (left), and
-  <b>invalid</b>
-  (right).
+  (middle), <b>valid</b> (left), and <b>invalid</b> (right).
 </p>
 
 <p>
@@ -172,11 +161,8 @@
 <h2>Animation</h2>
 
 <p>
-  Once
-  <i>able</i>
-  to respond to left/right input, we need to get the racers to
-  <i>actually</i>
-  turn left or right.
+  Once <i>able</i> to respond to left/right input, we need to get the racers to
+  <i>actually</i> turn left or right.
 </p>
 
 <p>
@@ -186,7 +172,8 @@
 
 <img
   src="./blog/mario-kart-css/mario-sprite-example.png"
-  alt="A sprite of Mario" />
+  alt="A sprite of Mario"
+/>
 
 <p>
   This allows us to then specify a manual keyframe animation, going through each
@@ -196,7 +183,8 @@
 <CodeSandbox
   id="62r107792k"
   title="Mario Turning Example"
-  initialFile="main.css" />
+  initialFile="main.css"
+/>
 
 <h2>Racer Select</h2>
 
@@ -207,22 +195,17 @@
 </p>
 
 <p>
-  To make the selection menu, we can make some
-  <code>radio</code>
-  inputs representing each racer. Our output should then show a different thing
-  depending on which input is
-  <code>:checked</code>
-  , using the sibling combinators
-  <code>+</code>
-  , and
-  <code>~</code>
-  .
+  To make the selection menu, we can make some <code>radio</code> inputs
+  representing each racer. Our output should then show a different thing
+  depending on which input is <code>:checked</code>, using the sibling
+  combinators <code>+</code>, and <code>~</code>.
 </p>
 
 <CodeSandbox
   id="y0wk0920kx"
   title="Racer Selection Example"
-  initialFile="main.css" />
+  initialFile="main.css"
+/>
 
 <h2>Toggle Menus</h2>
 
@@ -239,16 +222,16 @@
 </p>
 
 <p>
-  We can do this by listening to the
-  <code>:focus</code>
-  of whichever button you want to open the menu, and then allowing that button
-  to lose focus when you want the menu to close.
+  We can do this by listening to the <code>:focus</code> of whichever button you
+  want to open the menu, and then allowing that button to lose focus when you want
+  the menu to close.
 </p>
 
 <CodeSandbox
   id="ymxzyqlypz"
   title="Menu Toggle Example"
-  initialFile="main.css" />
+  initialFile="main.css"
+/>
 
 <h2>Conclusion</h2>
 
@@ -264,12 +247,12 @@
 </p>
 
 <p>
-  But do
-  <a href="https://twitter.com/StephenCookDev">follow me on Twitter,</a>
-  and share this if you enjoyed it!
+  But do <a href="https://twitter.com/StephenCookDev">follow me on Twitter,</a> and
+  share this if you enjoyed it!
 </p>
 
 <p>
-  And keep an eye out for my next instalment:
-  <b>Converting Your webpack Config to be 100% CSS.</b>
+  And keep an eye out for my next instalment: <b
+    >Converting Your webpack Config to be 100% CSS.</b
+  >
 </p>

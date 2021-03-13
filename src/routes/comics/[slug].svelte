@@ -1,5 +1,5 @@
 <script context="module">
-  const relativeComicSrc = slug => `/comics/${slug}.png`;
+  const relativeComicSrc = (slug) => `/comics/${slug}.png`;
 
   export async function preload({ params }) {
     const res = await this.fetch(`comics/${params.slug}.json`);
@@ -22,25 +22,85 @@
 
   export let comic;
 
-  const absoluteComicSrc = slug =>
+  const absoluteComicSrc = (slug) =>
     `https://stephencook.dev${relativeComicSrc(slug)}`;
-  const canonicalComicUrl = comic =>
+  const canonicalComicUrl = (comic) =>
     `https://stephencook.dev/comics/${comic.slug}/`;
 
-  const comicKeywords = comic =>
+  const comicKeywords = (comic) =>
     ["comic", comic.keywords].filter(Boolean).join(", ");
 
-  const twitterShareText = comic => `${comic.title} by @StephenCookDev`;
-  const twitterShareUrl = comic =>
+  const twitterShareText = (comic) => `${comic.title} by @StephenCookDev`;
+  const twitterShareUrl = (comic) =>
     `https://twitter.com/share?url=https://stephencook.dev/comics/${
       comic.slug
     }&amp;text=${encodeURIComponent(twitterShareText(comic))}`;
 
-  const shareTwitter = comic => e => {
+  const shareTwitter = (comic) => (e) => {
     e.preventDefault();
     window.open(twitterShareUrl(comic), "name", "width=600,height=400");
   };
 </script>
+
+<svelte:head>
+  <title>{comic.title} | Stephen Cook Dev Comics</title>
+  <meta name="description" content="{comic.title} | {comic.hoverText}" />
+  <meta name="keywords" content={comicKeywords(comic)} />
+  <meta property="og:title" content={comic.title} />
+  <link rel="canonical" href={canonicalComicUrl(comic)} />
+  <meta property="og:url" content={canonicalComicUrl(comic)} />
+  <meta property="og:image" content={absoluteComicSrc(comic.preview)} />
+  <meta name="twitter:image" content={absoluteComicSrc(comic.preview)} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@StephenCookDev" />
+  <meta name="twitter:creator" content="@StephenCookDev" />
+  <meta name="twitter:title" content={comic.title} />
+  <meta name="twitter:description" content={comic.hoverText} />
+</svelte:head>
+
+<CondensedHeader />
+
+<section>
+  <h2>{comic.title}</h2>
+
+  <div class="comic">
+    {#if comic.before}
+      <a
+        href="/comics/{comic.before}"
+        rel="prefetch"
+        class="arrow-link"
+        aria-label="Before"
+      >
+        <span class="before-arrow" />
+      </a>
+    {:else}
+      <span disabled class="before-arrow" aria-label="Before" />
+    {/if}
+    <Comic
+      src={relativeComicSrc(comic.slug)}
+      alt={comic.alt}
+      title={comic.hoverText}
+      class="comic-img"
+    />
+    {#if comic.after}
+      <a
+        href="/comics/{comic.after}"
+        rel="prefetch"
+        class="arrow-link"
+        aria-label="After"
+      >
+        <span class="after-arrow" />
+      </a>
+    {:else}
+      <span disabled class="after-arrow" aria-label="After" />
+    {/if}
+  </div>
+</section>
+
+<section class="share">
+  <a href="https://twitter.com/StephenCookDev">Follow Me</a>
+  <a href={twitterShareUrl(comic)} on:click={shareTwitter(comic)}>Share</a>
+</section>
 
 <style>
   h2 {
@@ -139,60 +199,3 @@
     top: calc(50% - 1px);
   }
 </style>
-
-<svelte:head>
-  <title>{comic.title} | Stephen Cook Dev Comics</title>
-  <meta name="description" content="{comic.title} | {comic.hoverText}" />
-  <meta name="keywords" content={comicKeywords(comic)} />
-  <meta property="og:title" content={comic.title} />
-  <link rel="canonical" href={canonicalComicUrl(comic)} />
-  <meta property="og:url" content={canonicalComicUrl(comic)} />
-  <meta property="og:image" content={absoluteComicSrc(comic.preview)} />
-  <meta name="twitter:image" content={absoluteComicSrc(comic.preview)} />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@StephenCookDev" />
-  <meta name="twitter:creator" content="@StephenCookDev" />
-  <meta name="twitter:title" content={comic.title} />
-  <meta name="twitter:description" content={comic.hoverText} />
-</svelte:head>
-
-<CondensedHeader />
-
-<section>
-  <h2>{comic.title}</h2>
-
-  <div class="comic">
-    {#if comic.before}
-      <a
-        href="/comics/{comic.before}"
-        rel="prefetch"
-        class="arrow-link"
-        aria-label="Before">
-        <span class="before-arrow" />
-      </a>
-    {:else}
-      <span disabled class="before-arrow" aria-label="Before" />
-    {/if}
-    <Comic
-      src={relativeComicSrc(comic.slug)}
-      alt={comic.alt}
-      title={comic.hoverText}
-      class="comic-img" />
-    {#if comic.after}
-      <a
-        href="/comics/{comic.after}"
-        rel="prefetch"
-        class="arrow-link"
-        aria-label="After">
-        <span class="after-arrow" />
-      </a>
-    {:else}
-      <span disabled class="after-arrow" aria-label="After" />
-    {/if}
-  </div>
-</section>
-
-<section class="share">
-  <a href="https://twitter.com/StephenCookDev">Follow Me</a>
-  <a href={twitterShareUrl(comic)} on:click={shareTwitter(comic)}>Share</a>
-</section>

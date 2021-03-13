@@ -6,6 +6,12 @@
   export let language;
 </script>
 
+<div class="container">
+  <div class="inner">
+    <Highlight language={languages[language]} code={code.trim()} />
+  </div>
+</div>
+
 <style>
   .container {
     width: 100%;
@@ -109,9 +115,3 @@
     font-weight: bold;
   }
 </style>
-
-<div class="container">
-  <div class="inner">
-    <Highlight language={languages[language]} code={code.trim()} />
-  </div>
-</div>

@@ -2,7 +2,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import replace from "@rollup/plugin-replace";
 import commonjs from "@rollup/plugin-commonjs";
 import svelte from "rollup-plugin-svelte";
-import babel from "rollup-plugin-babel";
+import babel from "@rollup/plugin-babel";
 import { terser } from "rollup-plugin-terser";
 import config from "sapper/config/rollup.js";
 import pkg from "./package.json";
@@ -12,6 +12,7 @@ const dev = mode === "development";
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 
 const onwarn = (warning, onwarn) =>
+  (warning.code === "MISSING_EXPORT" && /'preload'/.test(warning.message)) ||
   (warning.code === "CIRCULAR_DEPENDENCY" &&
     /[/\\]@sapper[/\\]/.test(warning.message)) ||
   onwarn(warning);
@@ -22,13 +23,17 @@ export default {
     output: config.client.output(),
     plugins: [
       replace({
-        "process.browser": true,
-        "process.env.NODE_ENV": JSON.stringify(mode),
+        preventAssignment: true,
+        values: {
+          "process.browser": true,
+          "process.env.NODE_ENV": JSON.stringify(mode),
+        },
       }),
       svelte({
-        dev,
-        hydratable: true,
-        emitCss: true,
+        compilerOptions: {
+          dev,
+          hydratable: true,
+        },
       }),
       resolve({
         browser: true,
@@ -39,7 +44,7 @@ export default {
       legacy &&
         babel({
           extensions: [".js", ".mjs", ".html", ".svelte"],
-          runtimeHelpers: true,
+          babelHelpers: "runtime",
           exclude: ["node_modules/@babel/**"],
           presets: [
             [
@@ -66,6 +71,7 @@ export default {
         }),
     ],
 
+    preserveEntrySignatures: false,
     onwarn,
   },
 
@@ -74,12 +80,19 @@ export default {
     output: config.server.output(),
     plugins: [
       replace({
-        "process.browser": false,
-        "process.env.NODE_ENV": JSON.stringify(mode),
+        preventAssignment: true,
+        values: {
+          "process.browser": false,
+          "process.env.NODE_ENV": JSON.stringify(mode),
+        },
       }),
       svelte({
-        generate: "ssr",
-        dev,
+        compilerOptions: {
+          dev,
+          generate: "ssr",
+          hydratable: true,
+        },
+        emitCss: false,
       }),
       resolve({
         dedupe: ["svelte"],
@@ -87,10 +100,9 @@ export default {
       commonjs(),
     ],
     external: Object.keys(pkg.dependencies).concat(
-      require("module").builtinModules ||
-        Object.keys(process.binding("natives"))
+      require("module").builtinModules
     ),
-
+    preserveEntrySignatures: "strict",
     onwarn,
   },
 
@@ -100,13 +112,16 @@ export default {
     plugins: [
       resolve(),
       replace({
-        "process.browser": true,
-        "process.env.NODE_ENV": JSON.stringify(mode),
+        preventAssignment: true,
+        values: {
+          "process.browser": true,
+          "process.env.NODE_ENV": JSON.stringify(mode),
+        },
       }),
       commonjs(),
       !dev && terser(),
     ],
-
+    preserveEntrySignatures: false,
     onwarn,
   },
 };

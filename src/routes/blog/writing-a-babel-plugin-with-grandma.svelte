@@ -10,7 +10,8 @@
   subtitle="How to Write a Custom Babel Plugin 👵📚"
   ogImage="/blog/writing-a-babel-plugin-with-grandma/parseTransformGenerate.png"
   keywords="javascript,babel,plugins,tutorial"
-  published="2020-04-25">
+  published="2020-04-25"
+>
   true
 </BlogMeta>
 
@@ -34,8 +35,8 @@
 <p>
   I
   <i>suppose</i>
-  you could also make a plugin that’s actually useful. I mean — I can’t
-  physically stop you.
+  you could also make a plugin that’s actually useful. I mean — I can’t physically
+  stop you.
 </p>
 
 <h2>What is Babel?</h2>
@@ -45,8 +46,8 @@
   assume you’re
   <i>roughly</i>
   familiar with Babel (if not,
-  <a href="https://babeljs.io/docs/en/6.26.3/">give this a read first</a>
-  ) — but let’s break it down a bit.
+  <a href="https://babeljs.io/docs/en/6.26.3/">give this a read first</a>) — but
+  let’s break it down a bit.
 </p>
 
 <p>
@@ -59,7 +60,8 @@
 
 <img
   src="/blog/writing-a-babel-plugin-with-grandma/parseTransformGenerate.png"
-  alt={'a hand-drawn diagram showing some code being parsed, transformed, then generated'} />
+  alt={"a hand-drawn diagram showing some code being parsed, transformed, then generated"}
+/>
 
 <p>
   In other words, it
@@ -89,15 +91,14 @@
   <b>parse</b>
   step, which means
   <i>we can’t add custom syntax.</i>
-
 </p>
 <p>
   In other words, we’re limited to transforming
   <i>from</i>
   valid JavaScript,
   <i>to</i>
-  valid JavaScript. If we want to transform something that isn’t valid
-  JavaScript, we would
+  valid JavaScript. If we want to transform something that isn’t valid JavaScript,
+  we would
   <a href="https://github.com/babel/babylon/pull/5#issuecomment-195801336">
     need to modify Babel itself.
   </a>
@@ -126,7 +127,8 @@ module.exports = function () {
   };
   
   return { visitor: SimpleVisitor };
-};`} />
+};`}
+/>
 
 <p>Now, we could write code like this:</p>
 
@@ -135,7 +137,8 @@ module.exports = function () {
   code={`
 function fireSwamp () {  
   return "We'll never survive!";  
-}`} />
+}`}
+/>
 
 <p>And it would run through Babel with our plugin, and compile to this:</p>
 
@@ -144,14 +147,15 @@ function fireSwamp () {
   code={`
 function fireSwamp () {  
   return "Nonsense. You're only saying that because no one ever has.";  
-}`} />
+}`}
+/>
 
 <p>
   What’s happening here? The visitor is an object mapping from the name of an
   AST node, to a function describing what to do with that node. So when Babel
   sees the matching
-  <code>StringLiteral</code>
-  , our plugin kicks in and transforms the string’s value.
+  <code>StringLiteral</code>, our plugin kicks in and transforms the string’s
+  value.
 </p>
 
 <h2>How Do We Transform More Code?</h2>
@@ -161,8 +165,7 @@ function fireSwamp () {
   more complicated. We’ll break down the code in the
   <a href="https://github.com/stephencookdev/grandmas-own-jsx">
     grandmas-own-jsx plugin
-  </a>
-  , step by step.
+  </a>, step by step.
 </p>
 
 <Code
@@ -191,7 +194,8 @@ module.exports = function ({ types: t }) {
   };
   
   return { visitor: GrandmaVisitorInitiator };
-};`} />
+};`}
+/>
 
 <p>
   Since
@@ -202,15 +206,15 @@ module.exports = function ({ types: t }) {
   <code>CommentBlock</code>
   elements in the
   <code>Program</code>
-  node. We use these comments to get the information we need to build our React
-  elements later on.
+  node. We use these comments to get the information we need to build our React elements
+  later on.
 </p>
 
 <p>
   Next, we set up a
   <i>new</i>
-  visitor to run on the rest of the tree. This lets us pass down state as we
-  traverse the tree, without depending on global state.
+  visitor to run on the rest of the tree. This lets us pass down state as we traverse
+  the tree, without depending on global state.
 </p>
 
 <Code
@@ -219,7 +223,8 @@ module.exports = function ({ types: t }) {
 path.traverse( // traverse the tree down from the current node  
   GrandmaVisitor, // the new visitor  
   { ... } // the state our new visitor should get  
-);`} />
+);`}
+/>
 
 <p>So let’s take a look at the new visitor:</p>
 
@@ -247,14 +252,15 @@ module.exports = function ({ types: t }) {
   const GrandmaVisitorInitiator = { /* ... */ };
 
   return { visitor: GrandmaVisitorInitiator };
-};`} />
+};`}
+/>
 
 <p>
   Here, we first look for any string that is just
   <code>"👵"</code>
   in our program. From the state that we were passed from the
-  <code>GrandmaVisitorInitiator</code>
-  , we grab the reference of what React elements are meant to be there.
+  <code>GrandmaVisitorInitiator</code>, we grab the reference of what React
+  elements are meant to be there.
 </p>
 
 <p>
@@ -273,22 +279,22 @@ module.exports = function ({ types: t }) {
   string) with
   <i>the new sub-tree</i>
   using
-  <code>replaceWith</code>
-  . In other words, we’re performing a transform like this:
+  <code>replaceWith</code>. In other words, we’re performing a transform like
+  this:
 </p>
 
 <img
   src="/blog/writing-a-babel-plugin-with-grandma/parseTransformGrandmaGenerate.png"
-  alt={'a hand-written diagram showing the AST transform of ‘👵’ to a React expression'}
-  title="The most ridiculous diagram I think I’ve ever drawn" />
+  alt={"a hand-written diagram showing the AST transform of ‘👵’ to a React expression"}
+  title="The most ridiculous diagram I think I’ve ever drawn"
+/>
 
 <h2>Generating Sub-Trees (Type Expressions)</h2>
 
 <p>
   In the previous step we created a whole new sub-tree of our AST using
-  <code>genTypeExpression</code>
-  . Babel lets us generate these AST sub-trees using type expressions — let’s
-  dig into how create these using the
+  <code>genTypeExpression</code>. Babel lets us generate these AST sub-trees
+  using type expressions — let’s dig into how create these using the
   <code>types</code>
   builders that Babel provides:
 </p>
@@ -314,7 +320,8 @@ module.exports = function ({ types: t }) {
   const GrandmaVisitorInitiator = { /* ... */ };
   
   return { visitor: GrandmaVisitorInitiator };
-};`} />
+};`}
+/>
 
 <p>
   By calling e.g.
@@ -324,8 +331,7 @@ module.exports = function ({ types: t }) {
   node. Similarly, to create a
   <code>StringLiteral</code>
   we would call
-  <code>t.stringLiteral</code>
-  .
+  <code>t.stringLiteral</code>.
 </p>
 
 <p>
@@ -377,7 +383,8 @@ module.exports = function ({ types: t }) {
   </p>
   &mdash; Stephen Cook (@StephenCookDev)
   <a
-    href="https://twitter.com/StephenCookDev/status/1246887081277902852?ref_src=twsrc%5Etfw">
+    href="https://twitter.com/StephenCookDev/status/1246887081277902852?ref_src=twsrc%5Etfw"
+  >
     April 5, 2020
   </a>
 </blockquote>

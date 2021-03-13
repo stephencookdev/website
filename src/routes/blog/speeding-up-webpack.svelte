@@ -7,9 +7,10 @@
   title="🔥 Speeding Up Webpack"
   subtitle="Seven 3 second changes to reduce build time by 77%"
   headerImage="/blog/speeding-up-webpack/snail.jpg"
-  headerAlt={'a snail on a clock'}
+  headerAlt={"a snail on a clock"}
   keywords="webpack,speed,slow,optimise"
-  published="2018-03-28">
+  published="2018-03-28"
+>
   true
 </BlogMeta>
 
@@ -29,7 +30,8 @@
 
 <img
   src="/blog/speeding-up-webpack/stop-the-madness.gif"
-  alt="Stop the madness" />
+  alt="Stop the madness"
+/>
 
 <p>
   But there came a tipping point. Eventually, we snapped and decided to get that
@@ -46,14 +48,16 @@
 <ul>
   <li>
     <a
-      href="https://medium.com/ottofellercom/0-100-in-two-seconds-speed-up-webpack-465de691ed4a">
+      href="https://medium.com/ottofellercom/0-100-in-two-seconds-speed-up-webpack-465de691ed4a"
+    >
       0–100 in two seconds — speed up webpack
     </a>
     <a href="https://medium.com/@gvidon">(by gvidon)</a>
   </li>
   <li>
     <a
-      href="https://slack.engineering/keep-webpack-fast-a-field-guide-for-better-build-performance-f56a5995e8f1">
+      href="https://slack.engineering/keep-webpack-fast-a-field-guide-for-better-build-performance-f56a5995e8f1"
+    >
       Keep webpack Fast
     </a>
     <a href="https://slack.engineering/@rowanoulton">(by Rowan Oulton)</a>
@@ -84,9 +88,8 @@
   <a href="https://github.com/stephencookdev/speed-measure-webpack-plugin/">
     Speed Measure Plugin
   </a>
-  for webpack, which we used to analyse the performance of our plugins and
-  loaders. This let us focus our search, and work out where the easiest wins
-  were.
+  for webpack, which we used to analyse the performance of our plugins and loaders.
+  This let us focus our search, and work out where the easiest wins were.
   <a href="/blog/announcing-smp">I’ve talked about SMP a bit already,</a>
   so won’t go into it in any more detail in this post.
 </p>
@@ -135,8 +138,7 @@
 <p>
   However, there’s nothing stopping you from upgrading your
   <code>UglifyJsPlugin</code>
-  version without upgrading webpack, and just manually importing the plugin
-  instead.
+  version without upgrading webpack, and just manually importing the plugin instead.
 </p>
 
 <p>
@@ -148,9 +150,9 @@
 <p>
   Turning on the
   <code>parallel</code>
-  flag, however, can save you a lot of time — depending on how beefy your
-  machine is, and how many cores it has. For us, running on i3.4xlarge EC2
-  instances with 16 vCPUs, this was considerable.
+  flag, however, can save you a lot of time — depending on how beefy your machine
+  is, and how many cores it has. For us, running on i3.4xlarge EC2 instances with
+  16 vCPUs, this was considerable.
 </p>
 
 <p>
@@ -167,15 +169,13 @@
   Most webpack configs have a rule to handle images, and that rule is normally
   <code>file-loader</code>
   followed by
-  <code>image-webpack-loader</code>
-  , or some other similar image loader.
+  <code>image-webpack-loader</code>, or some other similar image loader.
 </p>
 
 <p>
   But the only necessary loader here is the
-  <code>file-loader</code>
-  , which actually allows the image to end up in the output directory, and its
-  URI passed to the bundle.
+  <code>file-loader</code>, which actually allows the image to end up in the
+  output directory, and its URI passed to the bundle.
 </p>
 
 <p>
@@ -197,10 +197,8 @@
 
 <p>
   There are a few ways to cache with webpack — like using
-  <code>cache-loader</code>
-  ,
-  <code>HardSourceWebpackPlugin</code>
-  , or the
+  <code>cache-loader</code>,
+  <code>HardSourceWebpackPlugin</code>, or the
   <code>?cacheLoader</code>
   babel flag. All of these caching methods have an overhead to boot up. The time
   saved locally during a re-run is huge, but the
@@ -241,8 +239,8 @@
   <code>babel-loader</code>
   taking an average of
   <b>561 ms,</b>
-  this was an obvious enough opportunity for improvement. Not to mention the
-  benefit of reducing the npm install time, and reducing our dependency count!
+  this was an obvious enough opportunity for improvement. Not to mention the benefit
+  of reducing the npm install time, and reducing our dependency count!
 </p>
 
 <p>
@@ -278,8 +276,8 @@
 <p>
   (note that this is different to
   <code>DllPlugin</code>
-  which splits out your bundle into a separate file, but does so in an entirely
-  different process — which does massively help with your build speed).
+  which splits out your bundle into a separate file, but does so in an entirely different
+  process — which does massively help with your build speed).
 </p>
 
 <p>
@@ -298,8 +296,8 @@
   Whether you’re using PostCSS, SASS, or any other CSS tool, you likely don’t
   need it running on
   <i>all</i>
-  of your stylesheets. For us, we had some old legacy stylesheets, and
-  stylesheets coming from third-party dependencies, which were all vanilla CSS.
+  of your stylesheets. For us, we had some old legacy stylesheets, and stylesheets
+  coming from third-party dependencies, which were all vanilla CSS.
 </p>
 
 <p>
@@ -344,7 +342,8 @@
 
 <img
   src="/blog/speeding-up-webpack/the-flash.gif"
-  alt="The Flash running quickly" />
+  alt="The Flash running quickly"
+/>
 
 <p>
   But the webpack arts are dark ones, and I’m sure that we’ve missed many good

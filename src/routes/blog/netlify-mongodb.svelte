@@ -6,11 +6,12 @@
 <BlogMeta
   slug="netlify-mongodb"
   title="Jamming with MongoDB and Netlify"
-  subtitle={'Netlify can support a MongoDB database — a tale in having your cake and eating it too'}
+  subtitle={"Netlify can support a MongoDB database — a tale in having your cake and eating it too"}
   headerImage="/blog/netlify-mongodb/handshake.jpg"
-  headerAlt={'two people shaking hands, photoshopped to have their heads replaced by the Netlify and MongoDB logos'}
+  headerAlt={"two people shaking hands, photoshopped to have their heads replaced by the Netlify and MongoDB logos"}
   keywords="netlify,mongodb,database,jam"
-  published="2020-06-15">
+  published="2020-06-15"
+>
   true
 </BlogMeta>
 
@@ -50,7 +51,8 @@
   First things first, you’ll need to get a basic build set up on Netlify. I
   would recommend
   <a
-    href="https://www.netlify.com/blog/2016/09/29/a-step-by-step-guide-deploying-on-netlify/">
+    href="https://www.netlify.com/blog/2016/09/29/a-step-by-step-guide-deploying-on-netlify/"
+  >
     following this guide
   </a>
   and coming back here once you have a site being built and deployed.
@@ -61,16 +63,15 @@
 <p>
   We’ll be using
   <a href="https://docs.netlify.com/functions/overview/">Netlify Functions</a>
-  to let our site connect to our database. These are Lambda functions that run
-  dynamically on the server, but we’ll write alongside the rest of our code.
+  to let our site connect to our database. These are Lambda functions that run dynamically
+  on the server, but we’ll write alongside the rest of our code.
 </p>
 
 <p>
   First, let’s add a
   <code>functions</code>
   field to our
-  <code>netlify.toml</code>
-  (or
+  <code>netlify.toml</code> (or
   <a href="https://docs.netlify.com/configure-builds/file-based-configuration/">
     create a
     <code>netlify.toml</code>
@@ -83,7 +84,8 @@
   code={`
 [build]
   # Directory with the serverless Lambda functions
-  functions = "lambda_functions"`} />
+  functions = "lambda_functions"`}
+/>
 
 <p>
   Great! Now let’s create a Lambda function, to see what’s what. Create a new
@@ -106,7 +108,8 @@ module.exports.handler = async (event, context) => {
     statusCode: 200,
     body: \`The Unix time is \${unixTime}\`,
   };
-};`} />
+};`}
+/>
 
 <p>
   Now, if we deploy this, we should be able to call this function by making a
@@ -120,7 +123,8 @@ module.exports.handler = async (event, context) => {
   src="./blog/netlify-mongodb/what-is-the-time.png"
   alt="Our website showing us the current Unix time, from the server"
   width="800"
-  class="framed" />
+  class="framed"
+/>
 
 <p>Huzzah!</p>
 
@@ -138,8 +142,7 @@ module.exports.handler = async (event, context) => {
 <p>
   We can run this just from our project root, Netlify will make sure that our
   Lambda functions get access to it properly. Note that in this guide I’m using
-  <code>mongodb@3</code>
-  .
+  <code>mongodb@3</code>.
 </p>
 
 <h2>Access Data from our Database</h2>
@@ -152,17 +155,17 @@ module.exports.handler = async (event, context) => {
   <a href="https://docs.fauna.com/fauna/current/integrations/netlify.html">
     using FaunaDB
   </a>
-  on your Netlify site. FaunaDB has dedicated Netlify support, which MongoDB
-  sadly does not have — meaning we have to do some less-than-perfect things to
-  get things working with MongoDB.
+  on your Netlify site. FaunaDB has dedicated Netlify support, which MongoDB sadly
+  does not have — meaning we have to do some less-than-perfect things to get things
+  working with MongoDB.
 </p>
 
 <p>
   So let’s create a new Lambda function to access our database. I’m going to
   call mine
   <code>pokemon.js</code>
-  since my database holds a collection of my favourite Pokémon. It’s a crucial
-  database and one that I desperately need access to through the web.
+  since my database holds a collection of my favourite Pokémon. It’s a crucial database
+  and one that I desperately need access to through the web.
 </p>
 
 <Code
@@ -211,13 +214,14 @@ module.exports.handler = async (event, context) => {
   const db = await connectToDatabase(MONGODB_URI);
   return queryDatabase(db);
 };
-`} />
+`}
+/>
 
 <p>
   Note that we reference a
   <code>process.env.MONGODB_URI</code>
-  at the start. We can’t inline this URI in the code since it will include our
-  DB credentials.
+  at the start. We can’t inline this URI in the code since it will include our DB
+  credentials.
 </p>
 
 <p>
@@ -228,12 +232,14 @@ module.exports.handler = async (event, context) => {
 
 <Code
   language="bash"
-  code={`mongodb+srv://ashketchum:supersecurepassword123@cluster0-2cka2.mongodb.net/test?retryWrites=true&w=majority`} />
+  code={`mongodb+srv://ashketchum:supersecurepassword123@cluster0-2cka2.mongodb.net/test?retryWrites=true&w=majority`}
+/>
 
 <p>
   And we’re going to put that into
   <a
-    href="https://docs.netlify.com/configure-builds/environment-variables/#declare-variables">
+    href="https://docs.netlify.com/configure-builds/environment-variables/#declare-variables"
+  >
     a Netlify build variable
   </a>
   (which our Lambda function can access), and call it
@@ -245,7 +251,8 @@ module.exports.handler = async (event, context) => {
   src="./blog/netlify-mongodb/add-netlify-build-var.png"
   alt="Adding MongoDB URI environment variable"
   width="800"
-  class="framed" />
+  class="framed"
+/>
 
 <h2>Whitelisting (Here Be Dragons)</h2>
 
@@ -254,9 +261,8 @@ module.exports.handler = async (event, context) => {
   <code>GET</code>
   request to
   <b>/.netlify/functions/pokemon</b>
-  still doesn’t work. Unfortunately, MongoDB comes by default with whitelist
-  protection, meaning that it only allows specific IP ranges to access your
-  database.
+  still doesn’t work. Unfortunately, MongoDB comes by default with whitelist protection,
+  meaning that it only allows specific IP ranges to access your database.
 </p>
 
 <p>
@@ -273,7 +279,8 @@ module.exports.handler = async (event, context) => {
 <p>
   So instead,
   <a
-    href="https://community.netlify.com/t/fetching-mongodb-data-with-lambda-functions/11225/5">
+    href="https://community.netlify.com/t/fetching-mongodb-data-with-lambda-functions/11225/5"
+  >
     what Netlify recommend
   </a>
   is that we open up our database to the entire internet.
@@ -361,7 +368,8 @@ module.exports.handler = async (event, context) => {
       return { statusCode: 400 };
   }
 };
-`} />
+`}
+/>
 
 <p>
   Now we can test this by making a quick
@@ -387,13 +395,15 @@ console.log("POST request status code", postRequest.status);
 const newGetRequest = await fetch("/.netlify/functions/pokemon");
 const newListJson = await newGetRequest.json();
 
-console.log("GET request new result", newListJson);`} />
+console.log("GET request new result", newListJson);`}
+/>
 
 <img
   src="./blog/netlify-mongodb/add-pikachu.png"
   alt="Making a POST request to add Pikachu to our DB"
   width="500"
-  class="framed" />
+  class="framed"
+/>
 
 <p>Huzzah!</p>
 
@@ -404,20 +414,23 @@ console.log("GET request new result", newListJson);`} />
 <ul>
   <li>
     <a
-      href="https://github.com/stephencookdev/netlify-mongodb-example/commit/fb637bc528054779fdd50c5d9263c6ab6bef2b69">
+      href="https://github.com/stephencookdev/netlify-mongodb-example/commit/fb637bc528054779fdd50c5d9263c6ab6bef2b69"
+    >
       Create a Netlify Lambda Function
     </a>
   </li>
   <li>Hook up your Netlify Lambda to your MongoDB database</li>
   <li>
     <a
-      href="https://github.com/stephencookdev/netlify-mongodb-example/commit/0d99ae5b51b03af1b2b4f1134389ea8457661533">
+      href="https://github.com/stephencookdev/netlify-mongodb-example/commit/0d99ae5b51b03af1b2b4f1134389ea8457661533"
+    >
       Create a MongoDB query Lambda
     </a>
   </li>
   <li>
     <a
-      href="https://github.com/stephencookdev/netlify-mongodb-example/commit/a0b63272da314781e173e7e91398fb2d0a71d5fb">
+      href="https://github.com/stephencookdev/netlify-mongodb-example/commit/a0b63272da314781e173e7e91398fb2d0a71d5fb"
+    >
       Create a MongoDB modification Lambda
     </a>
   </li>

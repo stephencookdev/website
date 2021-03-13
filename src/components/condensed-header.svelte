@@ -1,3 +1,28 @@
+<header>
+  <h1 class="title">
+    <a href="/">StephenCookDev</a>
+  </h1>
+  <nav>
+    <ul>
+      <li>
+        <a href="/#about">About</a>
+      </li>
+      <li>
+        <a href="/#talks">Talks</a>
+      </li>
+      <li>
+        <a href="/blog">Blog</a>
+      </li>
+      <li>
+        <a href="/comics/latest">Comics</a>
+      </li>
+      <li>
+        <a href="/#open-source">GitHub</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
 <style>
   header {
     align-items: center;
@@ -44,28 +69,3 @@
     font-weight: 100;
   }
 </style>
-
-<header>
-  <h1 class="title">
-    <a href="/">StephenCookDev</a>
-  </h1>
-  <nav>
-    <ul>
-      <li>
-        <a href="/#about">About</a>
-      </li>
-      <li>
-        <a href="/#talks">Talks</a>
-      </li>
-      <li>
-        <a href="/blog">Blog</a>
-      </li>
-      <li>
-        <a href="/comics/latest">Comics</a>
-      </li>
-      <li>
-        <a href="/#open-source">GitHub</a>
-      </li>
-    </ul>
-  </nav>
-</header>

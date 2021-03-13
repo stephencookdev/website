@@ -11,40 +11,11 @@
   export let keywords;
   export let published;
 
-  const makeAbsolute = url =>
+  const makeAbsolute = (url) =>
     `https://stephencook.dev${url.startsWith("/") ? "" : "/"}${url}`;
 
   $: canonicalBlogUrl = `https://stephencook.dev/blog/${slug}`;
 </script>
-
-<style>
-  .published {
-    display: flex;
-    align-items: center;
-    color: #999;
-    font-style: italic;
-    font-weight: 100;
-    margin-top: -1.5rem;
-    margin-bottom: 3rem;
-    flex-wrap: wrap;
-  }
-  :global(.twitter-follow-button) {
-    margin-left: 0.7rem;
-    margin-top: -0.45rem;
-  }
-  @media (max-width: 800px) {
-    :global(.twitter-follow-button) {
-      width: 100% !important;
-      margin-left: 0;
-      margin-top: 0.3rem;
-    }
-  }
-
-  :global(.twitter-tweet) {
-    box-sizing: border-box;
-    margin: 3rem auto !important;
-  }
-</style>
 
 <svelte:head>
   <title>{title} | Stephen Cook Dev</title>
@@ -79,3 +50,32 @@
   by Stephen Cook
   <TwitterFollowButton className="twitter-follow-button" />
 </span>
+
+<style>
+  .published {
+    display: flex;
+    align-items: center;
+    color: #999;
+    font-style: italic;
+    font-weight: 100;
+    margin-top: -1.5rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+  :global(.twitter-follow-button) {
+    margin-left: 0.7rem;
+    margin-top: -0.45rem;
+  }
+  @media (max-width: 800px) {
+    :global(.twitter-follow-button) {
+      width: 100% !important;
+      margin-left: 0;
+      margin-top: 0.3rem;
+    }
+  }
+
+  :global(.twitter-tweet) {
+    box-sizing: border-box;
+    margin: 3rem auto !important;
+  }
+</style>

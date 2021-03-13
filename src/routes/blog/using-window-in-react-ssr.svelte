@@ -6,11 +6,12 @@
 <BlogMeta
   slug="using-window-in-react-ssr"
   title="Using window in React SSR: The Complete Guide"
-  subtitle={'What “window is not defined” and “expected server html to contain div” really mean'}
+  subtitle={"What “window is not defined” and “expected server html to contain div” really mean"}
   headerImage="/blog/using-window-in-react-ssr/sad-window.jpg"
-  headerAlt={'someone’s hand placed on a rainy window, looking out at other windows'}
+  headerAlt={"someone’s hand placed on a rainy window, looking out at other windows"}
   keywords="react,ssr,how-to,error"
-  published="2020-05-27">
+  published="2020-05-27"
+>
   true
 </BlogMeta>
 
@@ -65,23 +66,17 @@
 
 <p>
   Sometimes, it’s not even your code that depends on
-  <code>window</code>
-  . At the time of writing this,
-  <b>hellosign-embedded,</b>
+  <code>window</code>. At the time of writing this, <b>hellosign-embedded,</b>
   <b>react-stripe-elements,</b>
-  and
-  <b>react-chartjs</b>
-  all depend on
-  <code>window</code>
-  and break if you try to render them with SSR.
+  and <b>react-chartjs</b> all depend on <code>window</code> and break if you try
+  to render them with SSR.
 </p>
 
 <p>
-  To get around this, we can check if
-  <code>window</code>
-  is available before using it, by running something like
-  <code>if (typeof window === "undefined") return null</code>
-  . This lets us run the same code on the server and the browser.
+  To get around this, we can check if <code>window</code> is available before
+  using it, by running something like
+  <code>if (typeof window === "undefined") return null</code>. This lets us run
+  the same code on the server and the browser.
 </p>
 
 <h2>Hydration Warnings</h2>
@@ -97,10 +92,8 @@
 <p>
   When
   <code>ReactDOM.hydrate</code>
-  runs, it builds up the VDOM of your app on the user’s browser and then
-  compares this to the
-  <i>actual</i>
-  DOM (which has been SSR’d with some initial content).
+  runs, it builds up the VDOM of your app on the user’s browser and then compares
+  this to the <i>actual</i> DOM (which has been SSR’d with some initial content).
 </p>
 
 <p>
@@ -114,11 +107,9 @@
 <p>But why do we care? Can’t we suppress or ignore the warning?</p>
 
 <p>
-  Yes, you
-  <i>can</i>
-  suppress the warning with
-  <code>suppressHydrationWarning</code>
-  — but you shouldn’t. Doing so can seriously break your app.
+  Yes, you <i>can</i> suppress the warning with
+  <code>suppressHydrationWarning</code> — but you shouldn’t. Doing so can seriously
+  break your app.
 </p>
 
 <p>
@@ -134,12 +125,11 @@ const MyComponent = () => {
   if (typeof window === "undefined") return null;
 
   return <div>🍩</div>;
-}`} />
+}`}
+/>
 
 <p>
-  Then you might
-  <i>never</i>
-  see your precious 🍩.
+  Then you might <i>never</i> see your precious 🍩.
 </p>
 
 <p>
@@ -149,14 +139,11 @@ const MyComponent = () => {
 </p>
 
 <h2>
-  Safely Using
-  <code>window</code>
+  Safely Using <code>window</code>
 </h2>
 
 <p>
-  So how do we safely use
-  <code>window</code>
-  without causing our app to break?
+  So how do we safely use <code>window</code> without causing our app to break?
 </p>
 
 <p>
@@ -182,7 +169,8 @@ const useIsSsr = () => {
 
   return isSsr;
 }
-`} />
+`}
+/>
 
 <p>
   Now we can use this hook instead of checking for
@@ -198,14 +186,14 @@ const MyComponent = () => {
   if (isSsr) return null;
 
   return <div>🍩</div>;
-}`} />
+}`}
+/>
 
 <p>
   This hook guarantees that our initial browser render matches the initial
   server render. Then, we immediately render again, filling in the components
   that need
-  <code>window</code>
-  , all without confusing ReactDOM.
+  <code>window</code>, all without confusing ReactDOM.
 </p>
 
 <h2>Preventing Flashing</h2>
@@ -222,9 +210,9 @@ const MyComponent = () => {
   <code>return null</code>
   when on the server. Although
   <code>return null</code>
-  is super easy, it means that in the initial payload we’re not sending the
-  component’s markup at all. So when we eventually boot up the app fully on the
-  browser, the component
+  is super easy, it means that in the initial payload we’re not sending the component’s
+  markup at all. So when we eventually boot up the app fully on the browser, the
+  component
   <i>suddenly</i>
   appears — since it wasn’t there at all before.
 </p>
@@ -240,8 +228,7 @@ const MyComponent = () => {
   need it to
   <i>look</i>
   like the component, without depending on
-  <code>window</code>
-  .
+  <code>window</code>.
 </p>
 
 <p>Let’s take this component, for example:</p>
@@ -265,7 +252,8 @@ const WindowSizePredictor = () => {
     </div>
   );
 }
-`} />
+`}
+/>
 
 <p>We might prevent the flash by changing it to this:</p>
 
@@ -290,14 +278,15 @@ const WindowSizePredictor = () => {
     </div>
   );
 }
-`} />
+`}
+/>
 
 <h2>Summary</h2>
 
 <p>
   <code>window</code>
-  is not defined on the server, so you can’t use it during the render of a
-  component being SSR’d.
+  is not defined on the server, so you can’t use it during the render of a component
+  being SSR’d.
 </p>
 
 <p>
@@ -316,7 +305,7 @@ const WindowSizePredictor = () => {
 
 <p>
   You can just
-  <code>if (isSsr) return null</code>
-  , but if this causes visual flashing, then consider showing a placeholder
-  instead. It’s extra work, but the polish is worth it!
+  <code>if (isSsr) return null</code>, but if this causes visual flashing, then
+  consider showing a placeholder instead. It’s extra work, but the polish is
+  worth it!
 </p>
