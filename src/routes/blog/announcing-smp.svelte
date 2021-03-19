@@ -10,6 +10,7 @@
   ogImage="/blog/announcing-smp/smp-logo.png"
   keywords="webpack,speed,tools,javascript"
   published="2018-02-26"
+  recommended="using-window-in-react-ssr"
 >
   true
 </BlogMeta>

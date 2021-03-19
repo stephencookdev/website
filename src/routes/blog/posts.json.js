@@ -46,8 +46,15 @@ const posts = glob
   .sort(mostRecentFirst);
 
 for (let i = 0; i < posts.length; i++) {
-  if (i > 0) posts[i].before = posts[i - 1].slug;
-  if (i < posts.length - 1) posts[i].after = posts[i + 1].slug;
+  if (i > 0) posts[i].after = posts[i - 1].slug;
+  if (i < posts.length - 1) posts[i].before = posts[i + 1].slug;
+
+  if (!posts[i].recommended)
+    throw new Error(`${posts[i].slug} has no recommended post!`);
+  if ([posts[i].after, posts[i].before].includes(posts[i].recommended))
+    throw new Error(
+      `${posts[i].slug} cannot recommend the previous/next post!`
+    );
 }
 
 export function getDirect() {

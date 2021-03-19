@@ -13,6 +13,7 @@
 <script>
   import CondensedHeader from "../../components/condensed-header.svelte";
   import EmailListSubscribe from "../../components/email-list-subscribe.svelte";
+  import UpNext from "../../components/up-next.svelte";
 
   export let segment;
   export let posts;
@@ -26,6 +27,11 @@
   <slot />
 
   {#if specificPost}
+    <UpNext
+      allPosts={posts}
+      previousSlug={specificPost.before}
+      recommendedSlug={specificPost.recommended}
+    />
     <EmailListSubscribe />
 
     <div class="bio">

@@ -11,6 +11,7 @@
   headerAlt={"two people shaking hands, photoshopped to have their heads replaced by the Netlify and MongoDB logos"}
   keywords="netlify,mongodb,database,jam"
   published="2020-06-15"
+  recommended="speeding-up-webpack"
 >
   true
 </BlogMeta>

@@ -11,6 +11,7 @@
   ogImage="/blog/writing-a-babel-plugin-with-grandma/parseTransformGenerate.png"
   keywords="javascript,babel,plugins,tutorial"
   published="2020-04-25"
+  recommended="mario-kart-css"
 >
   true
 </BlogMeta>

@@ -10,6 +10,7 @@
   headerAlt={"a snail on a clock"}
   keywords="webpack,speed,slow,optimise"
   published="2018-03-28"
+  recommended="using-window-in-react-ssr"
 >
   true
 </BlogMeta>

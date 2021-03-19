@@ -11,6 +11,7 @@
   headerAlt="A person writing a list of goals"
   keywords="goals,resolutions"
   published="2020-01-07"
+  recommended="using-window-in-react-ssr"
 >
   true
 </BlogMeta>
