@@ -7,7 +7,7 @@
   title="🔥 Speeding Up Webpack"
   subtitle="Seven 3 second changes to reduce build time by 77%"
   headerImage="/blog/speeding-up-webpack/snail.jpg"
-  headerAlt={"a snail on a clock"}
+  headerAlt="a snail on a clock"
   keywords="webpack,speed,slow,optimise"
   published="2018-03-28"
   recommended="using-window-in-react-ssr"

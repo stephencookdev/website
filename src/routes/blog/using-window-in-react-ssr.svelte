@@ -6,9 +6,9 @@
 <BlogMeta
   slug="using-window-in-react-ssr"
   title="Using window in React SSR: The Complete Guide"
-  subtitle={"What “window is not defined” and “expected server html to contain div” really mean"}
+  subtitle="What “window is not defined” and “expected server html to contain div” really mean"
   headerImage="/blog/using-window-in-react-ssr/sad-window.jpg"
-  headerAlt={"someone’s hand placed on a rainy window, looking out at other windows"}
+  headerAlt="someone’s hand placed on a rainy window, looking out at other windows"
   keywords="react,ssr,how-to,error"
   published="2020-05-27"
   recommended="mario-kart-css"

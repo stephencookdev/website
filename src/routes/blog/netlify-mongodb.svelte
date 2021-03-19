@@ -6,9 +6,9 @@
 <BlogMeta
   slug="netlify-mongodb"
   title="Jamming with MongoDB and Netlify"
-  subtitle={"Netlify can support a MongoDB database — a tale in having your cake and eating it too"}
+  subtitle="Netlify can support a MongoDB database — a tale in having your cake and eating it too"
   headerImage="/blog/netlify-mongodb/handshake.jpg"
-  headerAlt={"two people shaking hands, photoshopped to have their heads replaced by the Netlify and MongoDB logos"}
+  headerAlt="two people shaking hands, photoshopped to have their heads replaced by the Netlify and MongoDB logos"
   keywords="netlify,mongodb,database,jam"
   published="2020-06-15"
   recommended="speeding-up-webpack"
