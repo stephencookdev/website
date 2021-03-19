@@ -27,11 +27,6 @@
   <slot />
 
   {#if specificPost}
-    <UpNext
-      allPosts={posts}
-      previousSlug={specificPost.before}
-      recommendedSlug={specificPost.recommended}
-    />
     <EmailListSubscribe />
 
     <div class="bio">
@@ -49,6 +44,16 @@
     </div>
   {/if}
 </main>
+
+{#if specificPost}
+  <footer>
+    <UpNext
+      allPosts={posts}
+      previousSlug={specificPost.before}
+      recommendedSlug={specificPost.recommended}
+    />
+  </footer>
+{/if}
 
 <style>
   main :global(h2) {
@@ -97,6 +102,7 @@
     color: #999;
     font-weight: 100;
   }
+
   @media (max-width: 800px) {
     main :global(blockquote p::before),
     main :global(blockquote p::after) {
