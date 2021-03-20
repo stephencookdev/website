@@ -18,9 +18,9 @@
       {#if tile.headerimage}
         <img src={tile.headerimage} alt={tile.headeralt} />
       {/if}
-      <div class="tile-title">
+      <div class="tile-title-group">
         <div class="tile-type">{tile.tileType}</div>
-        {tile.title}
+        <span class="tile-title">{tile.title}</span>
       </div>
     </a>
   {/each}
@@ -54,9 +54,9 @@
     object-fit: cover;
   }
 
-  .tile-title {
-    background: #e04e1c;
-    color: #fafafa;
+  .tile-title-group {
+    color: #e04e1c;
+    background: #fafafa;
     position: relative;
     max-width: 80%;
     font-size: 1.5rem;
@@ -65,17 +65,21 @@
     margin-top: 10%;
     margin-right: 1rem;
   }
-  .tile:last-child .tile-title {
+  .tile:last-child .tile-title-group {
     margin-right: 0;
     margin-left: 1rem;
   }
-  .tile:hover .tile-title {
-    background: #fafafa;
-    color: #e04e1c;
+  .tile:hover .tile-title-group {
+    color: #fafafa;
+    background: #e04e1c;
   }
 
   .tile-type {
     font-size: 2rem;
+  }
+
+  .tile-title {
+    line-height: 1;
   }
 
   @media (max-width: 800px) {
