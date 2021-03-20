@@ -3,18 +3,46 @@
   export let recommendedSlug;
   export let previousSlug;
 
+  const sendGa = (type, slug) => (e) => {
+    if (!window.ga) return;
+
+    e.preventDefault();
+    gtag("event", "click", {
+      event_category: "UpNext",
+      event_label: type,
+      event_value: slug,
+      transport_type: "beacon",
+      event_callback: () => {
+        document.location = `/blog/${slug}`;
+      },
+    });
+  };
+
   $: recommended = allPosts.find((post) => post.slug === recommendedSlug);
   $: previous = allPosts.find((post) => post.slug === previousSlug);
 
   $: tiles = [
-    { tileType: "Up Next", ...previous },
-    { tileType: "Recommended", ...recommended },
+    {
+      tileType: "Up Next",
+      onClick: sendGa("previous-article", previousSlug),
+      ...previous,
+    },
+    {
+      tileType: "Recommended",
+      onClick: sendGa("recommended", recommendedSlug),
+      ...recommended,
+    },
   ];
 </script>
 
 <div class="tiles">
   {#each tiles as tile}
-    <a href="/blog/{tile.slug}" rel="prefetch" class="tile">
+    <a
+      href="/blog/{tile.slug}"
+      rel="prefetch"
+      class="tile"
+      on:click={tile.onClick}
+    >
       {#if tile.headerimage}
         <img src={tile.headerimage} alt={tile.headeralt} />
       {/if}
