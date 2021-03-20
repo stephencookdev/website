@@ -49,7 +49,7 @@
   <footer>
     <UpNext
       allPosts={posts}
-      previousSlug={specificPost.before}
+      previousSlug={specificPost.before || specificPost.after}
       recommendedSlug={specificPost.recommended}
     />
   </footer>

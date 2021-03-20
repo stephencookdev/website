@@ -15,7 +15,9 @@
 <div class="tiles">
   {#each tiles as tile}
     <a href="/blog/{tile.slug}" rel="prefetch" class="tile">
-      <img src={tile.headerimage} alt={tile.headeralt} />
+      {#if tile.headerimage}
+        <img src={tile.headerimage} alt={tile.headeralt} />
+      {/if}
       <div class="tile-title">
         <div class="tile-type">{tile.tileType}</div>
         {tile.title}
@@ -37,6 +39,7 @@
     align-items: flex-start;
     justify-content: flex-end;
     text-decoration: none;
+    background: #50113c;
   }
   .tile:last-child {
     justify-content: flex-start;
