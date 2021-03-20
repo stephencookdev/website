@@ -2,6 +2,7 @@
   import BlogMeta from "../../components/blog-meta.svelte";
   import CodeSandbox from "../../components/code-sandbox.svelte";
   import Code from "../../components/code.svelte";
+  import TwitterQuote from "../../components/twitter-quote.svelte";
 </script>
 
 <BlogMeta
@@ -373,7 +374,7 @@ module.exports = function ({ types: t }) {
   the 👵 emoji.
 </p>
 
-<blockquote class="twitter-tweet">
+<TwitterQuote>
   <p lang="en" dir="ltr">
     I made my own babel plugin so I can stop writing JSX and just write emoji
     instead.
@@ -388,4 +389,4 @@ module.exports = function ({ types: t }) {
   >
     April 5, 2020
   </a>
-</blockquote>
+</TwitterQuote>

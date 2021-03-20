@@ -33,6 +33,10 @@
   <meta name="twitter:creator" content="@StephenCookDev" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={subtitle} />
+  <script
+    async
+    src="https://platform.twitter.com/widgets.js"
+    charset="utf-8"></script>
 </svelte:head>
 
 <h2>
