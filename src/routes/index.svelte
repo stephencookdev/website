@@ -173,8 +173,8 @@
       focus on software engineering full-time.
     </p>
     <p>
-      I’m reasonably full-stack, but I much prefer to focus on the front-end.
-      Feel free to check out
+      I’m a full-stack engineer, with most of my recent experience working on
+      projects using React and Node.js, Rails or Django. Feel free to check out
       <a href="https://www.linkedin.com/in/scook628/">my LinkedIn</a>
       if you want some more words about projects and stacks.
     </p>
@@ -188,7 +188,7 @@
     <p>
       Let’s Do This is a digital marketplace for sporting and mass participation
       events, inspiring users to take part in races, from local 5k Runs to
-      Double Ironman Triathlons It is a pretty cool company,
+      Double Ironman Triathlons. It is a pretty cool company,
       <a href="https://angel.co/company/lets-do-this/jobs"
         >if you were looking&hellip;</a
       >
