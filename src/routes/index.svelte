@@ -248,7 +248,7 @@
     </p>
     <p class="talks-seperated">
       <a href="https://www.youtube.com/watch?v=oxInrNWKcIw">video</a>
-      <a href="https://stephencook.dev/slides/dodge-the-blue-shell">slides</a>
+      <a href="/slides/dodge-the-blue-shell-talk">slides</a>
       <a href="https://github.com/stephencookdev/dodge-the-blue-shell-talk">
         slides source
       </a>
