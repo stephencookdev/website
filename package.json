@@ -8,7 +8,7 @@
     "build-prod": "NODE_ENV=production npm run build"
   },
   "dependencies": {
-    "@stephencookdev/dodge-the-blue-shell-talk": "^1.0.1",
+    "@stephencookdev/dodge-the-blue-shell-talk": "^1.0.2",
     "@stephencookdev/mario-kart-css-talk": "^1.2.0",
     "@stephencookdev/react-router-talk": "^1.0.1",
     "compression": "^1.7.1",
