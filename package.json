@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "sapper dev",
     "build": "sapper export --entry \"/ /blog/preview /404\" && ./build-slides.sh",
-    "build-prod": "NODE_ENV=production npm run build"
+    "build-prod": "NODE_ENV=production npm run build",
+    "deploy-invalidate-cloudfront": "travis-ci-cloudfront-invalidation -a $AWS_ACCESS_ID -s $AWS_SECRET_ID -c $CLOUDFRONT_ID -i '/*' -b $TRAVIS_BRANCH -p $TRAVIS_PULL_REQUEST"
   },
   "dependencies": {
     "@stephencookdev/dodge-the-blue-shell-talk": "^1.0.2",
@@ -36,6 +37,7 @@
     "rollup-plugin-terser": "^7.0.2",
     "sapper": "^0.29.1",
     "svelte": "^3.35.0",
-    "svelte-highlight": "^0.7.1"
+    "svelte-highlight": "^0.7.1",
+    "travis-ci-cloudfront-invalidation": "^1.1.0"
   }
 }

@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+  - 10
+script:
+  - npm run build-prod
+deploy:
+  provider: s3
+  access_key_id: $AWS_ACCESS_ID
+  secret_access_key: $AWS_SECRET_ID
+  bucket: "stephencook.dev"
+  skip_cleanup: true
+  region: eu-west-1
+  local_dir: __sapper__/export
+  on:
+    branch: master
+after_deploy:
+  - npm run deploy-invalidate-cloudfront
