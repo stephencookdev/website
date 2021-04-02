@@ -25,9 +25,17 @@
 
 <main>
   <slot />
+</main>
 
-  {#if specificPost}
-    <EmailListSubscribe />
+{#if specificPost}
+  <footer>
+    <div class="full">
+      <UpNext
+        allPosts={posts}
+        previousSlug={specificPost.before || specificPost.after}
+        recommendedSlug={specificPost.recommended}
+      />
+    </div>
 
     <div class="bio">
       <a href="/" class="bio-title">Stephen Cook Dev</a>
@@ -42,16 +50,8 @@
         <a href="https://twitter.com/stephencookdev">follow me on Twitter?</a>
       </p>
     </div>
-  {/if}
-</main>
 
-{#if specificPost}
-  <footer>
-    <UpNext
-      allPosts={posts}
-      previousSlug={specificPost.before || specificPost.after}
-      recommendedSlug={specificPost.recommended}
-    />
+    <EmailListSubscribe />
   </footer>
 {/if}
 

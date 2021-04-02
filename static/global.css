@@ -135,7 +135,8 @@ section .content {
   }
 }
 section h2,
-main h2 {
+main h2,
+footer h2 {
   font-family: "Inconsolata", monospace;
   font-size: 1.5rem;
   font-weight: 400;
@@ -144,25 +145,30 @@ main h2 {
   text-transform: uppercase;
 }
 section a,
-main a {
+main a,
+footer a {
   color: #e04e1c;
   padding-top: 0.4rem;
 }
 section a:hover,
 section a:focus,
 main a:hover,
-main a:focus {
+main a:focus,
+footer a:hover,
+footer a:focus {
   outline: none;
   color: #fafafa;
   background: #e04e1c;
 }
 section *::selection,
-main *::selection {
+main *::selection,
+footer *::selection {
   color: #fafafa;
   background: #e04e1c;
 }
 section a::selection,
-main a::selection {
+main a::selection,
+footer a::selection {
   color: #222;
   background: #e04e1c;
 }
@@ -171,7 +177,8 @@ main a::selection {
   margin-top: 0;
 }
 section p,
-main p {
+main p,
+footer p {
   font-size: 1.2rem;
   line-height: 1.5;
   margin: 1.6rem 0 0;
@@ -179,12 +186,14 @@ main p {
 }
 @media (max-width: 800px) {
   section p,
-  main p {
+  main p,
+  footer p {
     font-size: 1.3rem;
   }
 }
 section h2 + p,
-main h2 + p {
+main h2 + p,
+footer h2 + p {
   margin-top: 0.6rem;
 }
 
@@ -192,7 +201,8 @@ section ul {
   padding-left: 2rem;
 }
 section ul li,
-main ul li {
+main ul li,
+footer ul li {
   list-style: none;
   position: relative;
   font-size: 1.2rem;
@@ -202,12 +212,14 @@ main ul li {
 }
 @media (max-width: 800px) {
   section ul li,
-  main ul li {
+  main ul li,
+  footer ul li {
     font-size: 1.3rem;
   }
 }
 section ul li:after,
-main ul li:after {
+main ul li:after,
+footer ul li:after {
   position: absolute;
   top: 0.6rem;
   left: -2rem;
@@ -234,7 +246,8 @@ main > iframe {
   box-sizing: border-box;
 }
 
-main > :not(img):not(iframe) {
+main > :not(img):not(iframe):not(.full),
+footer > :not(img):not(iframe):not(.full) {
   max-width: 42.5rem;
   padding-left: 4rem;
   padding-right: 4rem;
@@ -248,7 +261,8 @@ main > ul {
 }
 
 @media (max-width: 800px) {
-  main > :not(img):not(iframe) {
+  main > :not(img):not(iframe):not(.full),
+  footer > :not(img):not(iframe):not(.full) {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     margin-left: auto;
@@ -261,7 +275,8 @@ main > ul {
 }
 
 section hr,
-main hr {
+main hr,
+footer hr {
   margin: 5rem auto;
   border: 0;
   border-top: 2px solid #e04e1c;
@@ -271,7 +286,8 @@ main hr {
 
 @media (max-width: 800px) {
   section hr,
-  main hr {
+  main hr,
+  footer hr {
     margin: 4.5rem auto;
   }
 }
@@ -286,6 +302,7 @@ p > code {
   text-transform: none;
 }
 
-main {
+main,
+footer {
   padding-bottom: 6rem;
 }
