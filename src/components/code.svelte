@@ -20,6 +20,7 @@
     background: #6a3459;
     margin-top: 2rem;
     margin-bottom: 2rem;
+    overflow: auto;
   }
 
   .container :global(*) {
@@ -40,7 +41,7 @@
 
   .container :global(.hljs) {
     display: block;
-    overflow-x: auto;
+    overflow: visible;
     font-weight: normal;
   }
 
