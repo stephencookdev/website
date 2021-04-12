@@ -4,6 +4,7 @@ TALKS=(
     'mario-kart-css-talk'
     'dodge-the-blue-shell-talk'
     'react-router-talk'
+    'professor-oaks-babel-plugin-talk'
 )
 
 for TALK in "${TALKS[@]}"; do
